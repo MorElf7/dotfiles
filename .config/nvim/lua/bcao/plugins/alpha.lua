@@ -22,7 +22,7 @@ return {
       dashboard.button("f", "󰮗  > Find file", ":Telescope find_files<CR>"),
       dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
       dashboard.button("w", "  > Find text", ":Telescope live_grep<CR>"),
-      dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h | split . | wincmd k | pwd<CR>"),
+      dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
       dashboard.button("l", "  > LazyUI", ":Lazy<CR>"),
     }
 

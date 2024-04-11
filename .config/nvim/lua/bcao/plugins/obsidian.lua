@@ -25,9 +25,13 @@ return {
       ui = {
         enable = false,
       },
+      attachments = {
+        img_fold = "./figures",
+      },
     })
 
     local keymap = vim.keymap -- for conciseness
     keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<cr>")
+    keymap.set("n", "<leader>or", "<cmd>ObsidianRename ")
   end,
 }

@@ -7,7 +7,7 @@ local keymap = vim.keymap -- for conciseness
 -- General Keymaps -------------------
 
 -- Ctrl + s for save
-keymap.set("n", "<C-s>", "<cmd>w!<cr>", { desc = "Write buffer" })
+keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "Write buffer" })
 keymap.set("n", "<C-q>", "<cmd>q!<cr>", { desc = "Quit" })
 
 -- use jk to exit insert mode
@@ -50,4 +50,6 @@ keymap.set("n", "<leader>a", "ggVG", { desc = "Select all" })
 keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
 
-keymap.set("n", "<cmd>noa w", "<leader>w")
+keymap.set("n", "<leader>w", "<cmd>noautocmd w<cr>")
+
+keymap.set("n", "-", "<cmd>Oil<cr>")
