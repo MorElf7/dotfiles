@@ -7,8 +7,8 @@ local keymap = vim.keymap -- for conciseness
 -- General Keymaps -------------------
 
 -- Ctrl + s for save
-keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "Write buffer" })
-keymap.set("n", "<C-q>", "<cmd>q!<cr>", { desc = "Quit" })
+-- keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "Write buffer" })
+-- keymap.set("n", "<C-q>", "<cmd>q!<cr>", { desc = "Quit" })
 
 -- use jk to exit insert mode
 -- keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
