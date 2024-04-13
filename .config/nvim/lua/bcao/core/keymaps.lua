@@ -53,3 +53,4 @@ keymap.set("n", "<C-u>", "<C-u>zz")
 keymap.set("n", "<leader>w", "<cmd>noautocmd w<cr>")
 
 keymap.set("n", "-", "<cmd>Oil<cr>")
+keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<cr>")
