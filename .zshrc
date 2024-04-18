@@ -124,8 +124,16 @@ source ~/.custom_cmd.sh
 
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"
+source ~/.nvm/nvm.sh
+[ -s "/usr/local/opt/nvm/etc/bash_completion" ] && \. "/usr/local/opt/nvm/etc/bash_completion"
 # [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
+export ESP_IDF_MONITOR_CFGFILE="$HOME/esp-idf-monitor.cfg"
 
 export EDITOR="nvim"
 export VISUAL="nvim"
 
+export BAT_THEME="kanagawa"
