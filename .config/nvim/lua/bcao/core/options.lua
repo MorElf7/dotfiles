@@ -41,7 +41,7 @@ opt.splitbelow = true -- split horizontal window to the bottom
 -- turn off swapfile
 opt.swapfile = false
 
-opt.hlsearch = false -- set search highlight false
+opt.hlsearch = true -- set search highlight false
 opt.breakindent = true -- enable break indent
 opt.undofile = true -- enable undo file
 opt.completeopt = "menuone,noselect" -- set completeopt for better completion experience

@@ -9,9 +9,20 @@ return {
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
+    local telescopeConfig = require("telescope.config")
 
+    -- Clone the default Telescope configuration
+    local vimgrep_arguments = telescopeConfig.values.vimgrep_arguments
+
+    -- I want to search in hidden/dot files.
+    table.insert(vimgrep_arguments, "--hidden")
+    -- I don't want to search in the `.git` directory.
+    table.insert(vimgrep_arguments, "--glob")
+    table.insert(vimgrep_arguments, "!**/.git/*")
+    table.insert(vimgrep_arguments, "--trim")
     telescope.setup({
       defaults = {
+        vimgrep_arguments = vimgrep_arguments,
         path_display = { "truncate " },
         mappings = {
           i = {
@@ -25,25 +36,30 @@ return {
         find_files = {
           hidden = true,
           follow = true,
+          find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
         },
       },
     })
 
     telescope.load_extension("fzf")
 
+    local utils = require("telescope.utils")
+    local builtin = require("telescope.builtin")
+    _G.project_files = function()
+      local _, ret, _ = utils.get_os_command_output({ "git", "rev-parse", "--is-inside-work-tree" })
+      if ret == 0 then
+        builtin.git_files()
+      else
+        builtin.find_files()
+      end
+    end
+
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
 
-    keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+    keymap.set("n", "<leader>ff", "<cmd>lua project_files()<cr>", { desc = "Fuzzy find files in cwd" })
     keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-    keymap.set("n", "<leader>fd", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-    keymap.set(
-      "n",
-      "<leader>fs",
-      "<cmd>Telescope current_buffer_fuzzy_find<cr>",
-      { desc = "Find string in curren buffer" }
-    )
-    keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
+    keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
     keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "Git branches" })
     keymap.set("n", "<leader>gst", "<cmd>Telescope git_stash<cr>", { desc = "Git stash" })
     keymap.set("n", "<leader>ch", "<cmd>Telescope command_history<cr>", { desc = "Nvim command history" })

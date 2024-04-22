@@ -31,8 +31,9 @@ return {
         "isort", -- python formatter
         "black", -- python formatter
         "clang-format",
-        "ruff",
+        "ruff-lsp",
         "gofumpt",
+        "gofmt",
         "golines",
         "goimports-reviser",
         "sqlfluff",
@@ -50,14 +51,15 @@ return {
         "lua_ls",
         "pyright",
         "clangd",
-        "csharp_ls",
+        -- "csharp_ls",
         "jdtls",
         "gopls",
         "texlab",
+        "ruff_lsp",
       },
 
       -- auto-install configured servers (with lspconfig)
-      automatic_installation = false, -- not the same as ensure_installed
+      automatic_installation = true, -- not the same as ensure_installed
     })
   end,
 }

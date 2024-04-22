@@ -104,11 +104,11 @@ return {
     })
 
     -- configure cs server
-    lspconfig["csharp_ls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { "cs" },
-    })
+    -- lspconfig["csharp_ls"].setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    --   filetypes = { "cs" },
+    -- })
 
     -- configure LaTex server
     lspconfig["texlab"].setup({
@@ -143,6 +143,13 @@ return {
 
     -- configure python server
     lspconfig["pyright"].setup({
+      capabilities = capabilities,
+      filetypes = { "python" },
+      on_attach = on_attach,
+    })
+
+    -- configure python server
+    lspconfig["ruff_lsp"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       filetypes = { "python" },

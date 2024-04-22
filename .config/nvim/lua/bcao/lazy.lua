@@ -12,14 +12,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({ { import = "bcao.plugins" }, { import = "bcao.plugins.lsp" } }, {
-  install = {
-    colorscheme = { "catppuccin-macchiato" },
-  },
   checker = {
     enabled = true,
     notify = false,
   },
   change_detection = {
     notify = false,
+  },
+  performance = {
+    cache = {
+      enabled = true,
+    },
   },
 })

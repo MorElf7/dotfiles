@@ -120,7 +120,7 @@ alias pdf="open -a 'Google Chrome'"
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
 alias cat="bat"
 
-source ~/.custom_cmd.sh
+source ~/custom_cmd.sh
 
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
@@ -137,3 +137,20 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 export BAT_THEME="kanagawa"
+
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git --exclude .venv"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude .venv"
+
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+bindkey -r "^G"
+source ~/fzf-git.sh
