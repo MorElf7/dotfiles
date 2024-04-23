@@ -3,6 +3,7 @@ return {
   dependencies = {
     "nvim-lua/plenary.nvim",
   },
+  events = { "BufRead", "BufNewFile" },
   config = function()
     require("harpoon").setup({
       menu = {

@@ -43,6 +43,18 @@ return {
 
     telescope.load_extension("fzf")
 
+    -- set keymaps
+    local keymap = vim.keymap -- for conciseness
+
+    keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files in cwd" })
+    keymap.set("n", "<leader>gf", "<cmd>lua project_files()<cr>", { desc = "Fuzzy find git files in cwd" })
+    keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
+    keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
+    keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "Git branches" })
+    keymap.set("n", "<leader>gst", "<cmd>Telescope git_stash<cr>", { desc = "Git stash" })
+    keymap.set("n", "<leader>ch", "<cmd>Telescope command_history<cr>", { desc = "Nvim command history" })
+  end,
+  init = function()
     local utils = require("telescope.utils")
     local builtin = require("telescope.builtin")
     _G.project_files = function()
@@ -53,15 +65,5 @@ return {
         builtin.find_files()
       end
     end
-
-    -- set keymaps
-    local keymap = vim.keymap -- for conciseness
-
-    keymap.set("n", "<leader>ff", "<cmd>lua project_files()<cr>", { desc = "Fuzzy find files in cwd" })
-    keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
-    keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-    keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "Git branches" })
-    keymap.set("n", "<leader>gst", "<cmd>Telescope git_stash<cr>", { desc = "Git stash" })
-    keymap.set("n", "<leader>ch", "<cmd>Telescope command_history<cr>", { desc = "Nvim command history" })
   end,
 }
