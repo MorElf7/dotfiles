@@ -1,0 +1,78 @@
+#!/bin/zsh
+
+pyvenv() {
+  python3 -m venv .venv
+  source .venv/bin/activate
+}
+
+yy() {
+  tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+
+tmux-personal() {
+  if [[ -n $TMUX ]]; then 
+    tmux switch-client -t personal 
+  else 
+    tmux attach -t personal 
+  fi;
+}
+zle -N tmux-personal
+
+tmux-session-mananger() {
+  selected_name=$(tmux ls | fzf-tmux -p --reverse | sed 's/:.*//')
+  
+  if [[ -z $selected_name ]]; then
+      return 0
+  fi
+
+  if [[ -n $TMUX ]]; then
+    tmux switch-client -t $selected_name
+  else
+    tmux attach -t $selected_name
+  fi
+}
+zle -N tmux-session-mananger
+
+tmux-sessionizer() {
+  if [[ $# -eq 1 ]]; then
+      selected=$1
+  else
+      selected=$(fd -t d -d 1 . '/Users/bcao/Documents/course' '/Users/bcao/Documents/projects' | fzf-tmux -p --reverse)
+  fi
+
+  if [[ -z $selected ]]; then
+      return 0
+  fi
+
+  selected_name=$(basename "$selected" | tr . _)
+  tmux_running=$(pgrep tmux)
+
+  if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+      tmux new-session -s $selected_name -c $selected
+      return 0
+  fi
+
+  if ! tmux has-session -t=$selected_name 2> /dev/null; then
+      tmux new-session -ds $selected_name -c $selected
+  fi
+
+  if [[ -n $TMUX ]]; then
+    tmux switch-client -t $selected_name
+  else
+    tmux attach -t $selected_name
+  fi
+}
+zle -N tmux-sessionizer
+
+ _fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+ _fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}

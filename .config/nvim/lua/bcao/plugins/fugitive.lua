@@ -1,6 +1,7 @@
 return {
   "tpope/vim-fugitive", -- git
   event = "VeryLazy",
+  enable = false,
   config = function()
     local keymap = vim.keymap
 

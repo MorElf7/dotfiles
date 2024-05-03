@@ -1,0 +1,5 @@
+[manager]
+prepend_keymap = [
+	{ on = [ "g","c" ], run = 'cd $HOME/dotfiles', desc = "Go to config dir" },
+	{ on = [ "g","D" ], run = 'cd $HOME/Documents', desc = "Go to documents dir" },
+]
