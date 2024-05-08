@@ -1,6 +1,6 @@
 return {
   "kdheepak/lazygit.nvim",
-  enable = false,
+  enabled = false,
   keys = {
     {
       "<leader>gg",

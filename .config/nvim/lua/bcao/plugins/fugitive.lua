@@ -1,7 +1,7 @@
 return {
   "tpope/vim-fugitive", -- git
   event = "VeryLazy",
-  enable = false,
+  enabled = false,
   config = function()
     local keymap = vim.keymap
 
@@ -11,6 +11,5 @@ return {
     keymap.set("n", "<leader>gl", "<cmd>Git pull<cr>", { desc = "Git pull" })
     keymap.set("n", "<leader>glo", "<cmd>Git log<cr>", { desc = "Git logs" })
     keymap.set("n", "<leader>gss", "<cmd>Git<cr>", { desc = "Git status" })
-    keymap.set("n", "<leader>gd", ":Gvdiffsplit ", { desc = "Git vertical diff split" })
   end,
 }

@@ -21,7 +21,6 @@ tmux-personal() {
     tmux attach -t personal 
   fi;
 }
-zle -N tmux-personal
 
 tmux-session-mananger() {
   selected_name=$(tmux ls | fzf-tmux -p --reverse | sed 's/:.*//')
@@ -36,7 +35,6 @@ tmux-session-mananger() {
     tmux attach -t $selected_name
   fi
 }
-zle -N tmux-session-mananger
 
 tmux-sessionizer() {
   if [[ $# -eq 1 ]]; then
@@ -53,12 +51,12 @@ tmux-sessionizer() {
   tmux_running=$(pgrep tmux)
 
   if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-      tmux new-session -s $selected_name -c $selected
+      tmux new-session -s $selected_name 
       return 0
   fi
 
   if ! tmux has-session -t=$selected_name 2> /dev/null; then
-      tmux new-session -ds $selected_name -c $selected
+      tmux new-session -ds $selected_name 
   fi
 
   if [[ -n $TMUX ]]; then
@@ -67,7 +65,6 @@ tmux-sessionizer() {
     tmux attach -t $selected_name
   fi
 }
-zle -N tmux-sessionizer
 
  _fzf_compgen_path() {
   fd --hidden --exclude .git . "$1"

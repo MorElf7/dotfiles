@@ -12,6 +12,12 @@ return {
       silent = true,
       noremap = true,
     },
+    {
+      "<leader>gd",
+      ":DiffviewOpen<Return>",
+      silent = true,
+      noremap = true,
+    },
   },
   config = function()
     require("neogit").setup({

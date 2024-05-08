@@ -89,14 +89,14 @@ config.keys = {
 	bind_if("l", "CTRL", act.ActivatePaneDirection("Right")),
 	-- Switch to the default workspace
 	bind_if(
-		"e",
+		"p",
 		"CTRL",
 		act.SwitchToWorkspace({
 			name = "default",
 		})
 	),
 	-- Sessionizer
-	{ key = "s", mods = "CTRL", action = wezterm.action_callback(sessionizer.toggle) },
+	{ key = "o", mods = "CTRL", action = wezterm.action_callback(sessionizer.toggle) },
 	-- Fuzzy workspace
 	{
 		key = "f",
