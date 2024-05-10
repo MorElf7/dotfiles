@@ -1,0 +1,34 @@
+spacing         = 4
+padding         = 1
+separator       = ""
+key_color       = "#7FB4CA"
+
+[palette]
+type = "Full"
+visible = true
+
+[box]
+border          = "rounded"
+visible         = true
+
+[keys]
+host            = "Host"
+kernel          = "Kernel"
+battery         = "Battery"
+os              = "OS"
+de              = "DE"
+wm              = "WM"
+distro          = "Distro"
+terminal        = "Terminal"
+shell           = "Shell"
+packages        = "Packages"
+uptime          = "Uptime"
+memory          = "Memory"
+machine         = "Machine"
+local_ip        = "Local IP"
+backlight       = "Brightness"
+resolution      = "Resolution"
+cpu_load        = "CPU Load"
+cpu             = "CPU"
+gpu             = "GPU"
+disk_space      = "Disk Space"

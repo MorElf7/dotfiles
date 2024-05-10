@@ -1,0 +1,18 @@
+theme = "Hydrogen"
+
+show = [
+  "Host", 
+  "Kernel", 
+  "Distribution", 
+  "OperatingSystem", 
+  "DesktopEnvironment", 
+  "WindowManager",
+  "Packages",
+  "Terminal", 
+  "Shell", 
+  "Uptime", 
+  "Processor",
+  "ProcessorLoad", 
+  "Memory"
+  # "GPU",
+]
