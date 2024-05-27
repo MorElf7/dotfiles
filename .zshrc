@@ -12,13 +12,13 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source $HOME/.sdkman/bin/sdkman-init.sh
 
 source $HOME/.local/scripts/fzf-git.sh
-source $HOME/.local/scripts/.fzf.zsh
 source $HOME/.local/scripts/commands
 source $HOME/.local/scripts/git.plugin.zsh
 
 # Export
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
+eval "$(fzf --zsh)"
 export XDG_CONFIG_HOME="$HOME/.config"
 export NVM_DIR="$HOME/.nvm"
 export ESP_IDF_MONITOR_CFGFILE="$HOME/esp-idf-monitor.cfg"
@@ -35,7 +35,7 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-
+export PATH=”$HOME/.emacs.d/bin:$PATH”
 
 # # Alias
 alias cat="bat"
@@ -43,7 +43,7 @@ alias fzf="fzf --preview 'bat --style numbers,changes --color=always --line-rang
 alias vim="nvim"
 alias pip="pip3"
 alias python="python3"
-alias pdf="open -a 'Brave Browser'"
+alias pdf="open -a 'Chrome'"
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
 alias cd="z"
 alias icat="kitten icat"
