@@ -35,7 +35,7 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-export PATH=”$HOME/.emacs.d/bin:$PATH”
+export PATH="$HOME/.emacs.d/bin:$PATH"
 
 # # Alias
 alias cat="bat"
@@ -54,6 +54,7 @@ alias grep='grep --color=auto'
 alias g='lazygit'
 alias gp="git pull"
 alias gP="git push"
+alias emacs="emacsclient -c"
 
 # confirm before overwriting something
 alias cp="cp -i"
