@@ -47,7 +47,6 @@ return {
     local keymap = vim.keymap -- for conciseness
 
     keymap.set("n", "<leader>ff", "<cmd>lua project_files()<cr>", { desc = "Fuzzy find git files in cwd" })
-    keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Fuzzy find recent files" })
     keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
     keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "Git branches" })
     keymap.set("n", "<leader>gst", "<cmd>Telescope git_stash<cr>", { desc = "Git stash" })

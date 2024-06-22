@@ -42,7 +42,8 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-export PATH="$HOME/.emacs.d/bin:$PATH"
+# export PATH="$HOME/.emacs.d/bin:$PATH"
+export PATH="/Users/bcao/.ebcli-virtual-env/executables:$PATH"
 
 # # Alias
 alias cat="bat"
@@ -89,3 +90,6 @@ setopt hist_verify
 
 setopt autocd
 
+
+# Created by `pipx` on 2024-06-21 03:46:11
+export PATH="$PATH:/Users/bcao/.local/bin"
