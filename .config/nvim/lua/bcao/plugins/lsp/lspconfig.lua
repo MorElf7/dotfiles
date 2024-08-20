@@ -96,12 +96,12 @@ return {
       filetypes = { "css" },
     })
 
-    -- configure java server
-    lspconfig["jdtls"].setup({
-      capabilities = capabilities,
-      on_attach = on_attach,
-      filetypes = { "java" },
-    })
+    -- -- configure java server
+    -- lspconfig["jdtls"].setup({
+    --   capabilities = capabilities,
+    --   on_attach = on_attach,
+    --   filetypes = { "java" },
+    -- })
 
     -- configure cs server
     -- lspconfig["csharp_ls"].setup({

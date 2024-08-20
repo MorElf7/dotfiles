@@ -13,6 +13,7 @@ return {
         typescriptreact = { { "prettierd", "prettier" } },
         json = { { "prettierd", "prettier" } },
         cpp = { "clang-format" },
+        go = { "gofumpt", "goimports-reviser", "golines" },
       },
       format_on_save = {
         -- These options will be passed to conform.format()
