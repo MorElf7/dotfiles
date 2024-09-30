@@ -51,7 +51,7 @@ alias fzf="fzf --preview 'bat --style numbers,changes --color=always --line-rang
 alias vim="nvim"
 alias pip="pip3"
 alias python="python3"
-alias pdf="open -a 'Chrome'"
+alias pdf="open -a 'Google Chrome'"
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
 alias cd="z"
 alias icat="kitten icat"

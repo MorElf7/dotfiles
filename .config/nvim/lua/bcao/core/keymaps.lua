@@ -22,7 +22,7 @@ keymap.set({ "n", "v" }, "c", "c")
 keymap.set({ "n", "v" }, "x", "x")
 
 keymap.set("v", "<leader>p", '"_dP')
-keymap.set({ "n", "v" }, "<leader>d", '"_d')
+-- keymap.set({ "n", "v" }, "<leader>d", '"_d')
 keymap.set({ "n", "v" }, "<leader>x", '"_x')
 keymap.set({ "n", "v" }, "<leader>c", '"_c')
 
