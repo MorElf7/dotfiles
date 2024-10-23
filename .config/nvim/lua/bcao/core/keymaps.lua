@@ -42,10 +42,6 @@ keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  g--[[  ]]o to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
--- move line
-keymap.set("n", "<C-]>", "<cmd>move -2<CR>", { desc = "Move line up 1 line" }) --  move line up 1 line
-keymap.set("n", "<C-[>", "<cmd>move +1<CR>", { desc = "Move line down 1 line" }) -- move line down 1 line
-
 keymap.set("n", "<leader>a", "ggVG", { desc = "Select all" })
 
 keymap.set("n", "<C-d>", "<C-d>zz")
