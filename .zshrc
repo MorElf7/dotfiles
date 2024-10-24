@@ -73,8 +73,7 @@ macchina
 
 # Keybinds
 bindkey -r "^G"
-bindkey -s "^O" "tmux-sessionizer\n"
-bindkey -s "^P" "tmux-personal\n"
+bindkey -s "^F" "tmux-sessionizer\n"
 bindkey "^E" vi-forward-blank-word
 bindkey "^B" vi-backward-blank-word
 
