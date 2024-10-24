@@ -1,0 +1,79 @@
+! 
+! ██╗  ██╗██████╗ ███████╗███████╗ ██████╗ ██╗   ██╗██████╗  ██████╗███████╗███████╗
+! ╚██╗██╔╝██╔══██╗██╔════╝██╔════╝██╔═══██╗██║   ██║██╔══██╗██╔════╝██╔════╝██╔════╝
+!  ╚███╔╝ ██████╔╝█████╗  ███████╗██║   ██║██║   ██║██████╔╝██║     █████╗  ███████╗
+!  ██╔██╗ ██╔══██╗██╔══╝  ╚════██║██║   ██║██║   ██║██╔══██╗██║     ██╔══╝  ╚════██║
+! ██╔╝ ██╗██║  ██║███████╗███████║╚██████╔╝╚██████╔╝██║  ██║╚██████╗███████╗███████║
+! ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚══════╝╚══════╝
+!
+! Xresources Config File by Arfan Zubi
+
+
+!! Appearance
+URxvt.font: \
+    xft:FiraCode Nerd Font Mono:size=7:antialias=true:hinting=true,\
+    xft:Noto Color Emoji:size=7
+URxvt.letterSpace: -1
+URxvt.lineSpace: 0
+URxvt.geometry: 240x135
+URxvt.internalBorder: 10
+URxvt.cursorBlink: true
+URxvt.cursorUnderline: false
+URxvt.saveline: 2048
+URxvt.scrollBar: false
+URxvt.scrollBar_rigth: false
+URxvt.urgentOnBell: true
+URxvt.depth: 32
+URxvt.iso14755: false
+
+!! Colorscheme
+*background: #1F1F28
+*foreground: #DCD7BA
+
+*color0: #090618
+*color8: #727169
+
+*color1: #C34043
+*color9: #E82424
+
+*color2: #76946A
+*color10: #98BB6C
+
+! *color3: #FFA066
+*color3: #C0A36E
+*color11: #E6C384
+
+*color4: #7E9CD8
+*color12: #7FB4CA
+
+*color5: #957FB8
+*color13: #938AA9
+
+*color6: #6A9589
+*color14: #7AA89F
+
+*color7: #C8C093
+*color15: #DCD7BA
+
+!! Extensions
+URxvt.perl-ext-common: default,resize-font
+
+! Extension Settings
+URxvt.keysym.C-Down:  resize-font:smaller
+URxvt.keysym.C-Up:    resize-font:bigger
+
+URxvt.urlLauncher: firefox
+URxvt.underlineURLs: true
+URxvt.urlButton: 1
+
+!! Retina Display Settings
+Xft.dpi: 96
+
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.antialias: 1
+Xft.hinting: 1
+Xft.rgba: rgb
+
+

@@ -1,8 +1,8 @@
 #!/bin/zsh
 
 pyvenv() {
-  virtualenv venv
-  source venv/bin/activate
+  python3 -m venv ./venv
+  source .venv/bin/activate
 }
 
 yy() {
@@ -12,28 +12,6 @@ yy() {
 		cd -- "$cwd"
 	fi
 	rm -f -- "$tmp"
-}
-
-tmux-personal() {
-  if [[ -n $TMUX ]]; then 
-    tmux switch-client -t personal 
-  else 
-    tmux attach -t personal 
-  fi;
-}
-
-tmux-session-mananger() {
-  selected_name=$(tmux ls | fzf-tmux -p --reverse | sed 's/:.*//')
-  
-  if [[ -z $selected_name ]]; then
-      return 0
-  fi
-
-  if [[ -n $TMUX ]]; then
-    tmux switch-client -t $selected_name
-  else
-    tmux attach -t $selected_name
-  fi
 }
 
 tmux-sessionizer() {
