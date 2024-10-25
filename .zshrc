@@ -1,3 +1,8 @@
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit
+compinit
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -15,8 +20,9 @@ source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-[[ -s "$HOME/.nvm/nvm.sh" ]] && source $HOME/.nvm/nvm.sh
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source $HOME/.sdkman/bin/sdkman-init.sh
+# Source runtime
+source "$HOME/.asdf/asdf.sh"
+source ~/.asdf/plugins/java/set-java-home.zsh
 
 source $HOME/.local/scripts/fzf-git.sh
 source $HOME/.local/scripts/commands
@@ -35,7 +41,6 @@ export BAT_THEME="kanagawa"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git --exclude .venv"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude .venv"
-export SDKMAN_DIR="$HOME/.sdkman"
 export PNPM_HOME="/Users/bcao/Library/pnpm"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 case ":$PATH:" in
@@ -46,23 +51,20 @@ esac
 export PATH="/Users/bcao/.ebcli-virtual-env/executables:$PATH"
 
 # # Alias
-alias cat="bat"
-alias fzf="fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}'"
+# alias fzf="fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}'"
 alias vim="nvim"
-alias pip="pip3"
-alias python="python3"
-alias pdf="open -a 'Google Chrome'"
+# alias pip="pip3"
+# alias python="python3"
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
 alias cd="z"
 alias icat="kitten icat"
-alias v="fd -t f -H -E .git -E .venv -L | fzf | xargs nvim"
+alias v="fd -t f -H -E .git -E .venv -L | fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}' | xargs nvim"
 alias ls="eza -la"
 alias sed="gsed"
 alias grep='grep --color=auto'
 alias g='lazygit'
 alias gp="git pull"
 alias gP="git push"
-alias emacs="emacsclient -c"
 
 # confirm before overwriting something
 alias cp="cp -i"
@@ -87,7 +89,6 @@ setopt hist_ignore_dups
 setopt hist_verify
 
 setopt autocd
-
 
 # Created by `pipx` on 2024-06-21 03:46:11
 export PATH="$PATH:/Users/bcao/.local/bin"
