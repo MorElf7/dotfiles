@@ -28,6 +28,7 @@ source $HOME/.local/scripts/fzf-git.sh
 source $HOME/.local/scripts/commands
 source $HOME/.local/scripts/git.plugin.zsh
 
+
 # Export
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
@@ -71,7 +72,6 @@ alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
-macchina
 
 # Keybinds
 bindkey -r "^G"
@@ -92,3 +92,13 @@ setopt autocd
 
 # Created by `pipx` on 2024-06-21 03:46:11
 export PATH="$PATH:/Users/bcao/.local/bin"
+
+_fzf_compgen_path() {
+  fd --hidden --exclude .git . "$1"
+}
+
+_fzf_compgen_dir() {
+  fd --type=d --hidden --exclude .git . "$1"
+}
+
+macchina
