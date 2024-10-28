@@ -10,7 +10,6 @@ $hostname\
 $directory\
 $git_branch\
 $git_commit\
-$git_status\
 $docker_context\
 $package\
 $c\
@@ -59,6 +58,9 @@ crust = "#11111b"
 # Specific modules
 [character] # The name of the module we are configuring is 'character'
 success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
+[cmd_duration]
+format = '\[[$duration]($style)\]'
 
 [package]
 symbol = "󰏗 "
