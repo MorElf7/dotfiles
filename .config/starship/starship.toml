@@ -9,7 +9,10 @@ $username\
 $hostname\
 $directory\
 $git_branch\
-$git_commit\
+$git_commit
+$character"""
+
+right_format = """
 $docker_context\
 $package\
 $c\
@@ -22,9 +25,7 @@ $lua\
 $nodejs\
 $python\
 $cmd_duration\
-$line_break\
-$status\
-$character"""
+"""
 
 # Themes
 [palettes.catppuccin_mocha]
