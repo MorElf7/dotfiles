@@ -1,22 +1,11 @@
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit
-compinit
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+compinit -u
 
 # Source
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
-[[ ! -f "$HOME/.p10k.zsh" ]] || source $HOME/.p10k.zsh
-
-# source $(brew --prefix)/share/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -24,16 +13,14 @@ source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 source "$HOME/.asdf/asdf.sh"
 source ~/.asdf/plugins/java/set-java-home.zsh
 
-source $HOME/.local/scripts/fzf-git.sh
 source $HOME/.local/scripts/commands
-source $HOME/.local/scripts/git.plugin.zsh
-
 
 # Export
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
 export XDG_CONFIG_HOME="$HOME/.config"
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export NVM_DIR="$HOME/.nvm"
 export ESP_IDF_MONITOR_CFGFILE="$HOME/esp-idf-monitor.cfg"
 export EDITOR="nvim"
@@ -48,14 +35,10 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# export PATH="$HOME/.emacs.d/bin:$PATH"
 export PATH="/Users/bcao/.ebcli-virtual-env/executables:$PATH"
 
-# # Alias
-# alias fzf="fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}'"
+# Alias
 alias vim="nvim"
-# alias pip="pip3"
-# alias python="python3"
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
 alias cd="z"
 alias icat="kitten icat"
@@ -101,4 +84,9 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
+# Run macchina
 macchina
+
+# Config starship prompt
+eval "$(starship init zsh)"
+
