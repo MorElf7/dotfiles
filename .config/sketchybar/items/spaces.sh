@@ -16,10 +16,8 @@ for m in $(aerospace list-monitors | awk '{print $1}'); do
       icon="$sid"
       icon.highlight_color=$RED
       icon.padding_left=10
-      icon.padding_right=10
+      icon.padding_right=5
       display=$m
-      padding_left=2
-      padding_right=2
       label.color=$GREY
       label.highlight_color=$WHITE
       label.font="sketchybar-app-font:Regular:16.0"
@@ -42,7 +40,7 @@ for m in $(aerospace list-monitors | awk '{print $1}'); do
         icon_strip+=" $($CONFIG_DIR/plugins/icon_map.sh "$app")"
       done <<< "${apps}"
     else
-      icon_strip=" —"
+      icon_strip=" "
     fi
 
     sketchybar --set space.$sid label="$icon_strip"
