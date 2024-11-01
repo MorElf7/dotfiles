@@ -7,11 +7,6 @@ fi
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit
-compinit -u
-
 # Source
 # Source runtime
 source "$HOME/.asdf/asdf.sh"
@@ -20,6 +15,10 @@ source ~/.asdf/plugins/java/set-java-home.zsh
 source $HOME/.local/scripts/commands
 
 # Export
+
+# Config starship prompt
+eval "$(starship init zsh)"
+
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
@@ -80,6 +79,16 @@ _fzf_compgen_dir() {
 # Run macchina
 macchina
 
-# Config starship prompt
-eval "$(starship init zsh)"
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit
+compinit -u
 
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit
+compinit -u
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit
+compinit -u
