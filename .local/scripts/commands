@@ -1,10 +1,12 @@
 #!/bin/zsh
 
+# Setup python virtual environment
 pyvenv() {
-  python3 -m venv ./venv
-  source .venv/bin/activate
+  python3 -m venv venv
+  source venv/bin/activate
 }
 
+# Yazi
 yy() {
   tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 	yazi "$@" --cwd-file="$tmp"
@@ -14,11 +16,13 @@ yy() {
 	rm -f -- "$tmp"
 }
 
+
+# Tmux sessionzier
 tmux-sessionizer() {
   if [[ $# -eq 1 ]]; then
       selected=$1
   else
-      selected=$(fd -t d -d 1 . '/Users/bcao/Documents/course' '/Users/bcao/Documents/projects' | fzf-tmux -p --reverse)
+      selected=$(fd -t d -d 1 . '/Users/bcao/Documents/course' '/Users/bcao/Documents/projects' | fzf)
   fi
 
   if [[ -z $selected ]]; then
@@ -29,7 +33,8 @@ tmux-sessionizer() {
   tmux_running=$(pgrep tmux)
 
   if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-      tmux new-session -ds $selected_name -c $selected
+    echo "Hello"
+      tmux new-session -s $selected_name -c $selected
       return 0
   fi
 
@@ -44,10 +49,24 @@ tmux-sessionizer() {
   fi
 }
 
- _fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
-}
+#ASDF Commands
+#-----------------------------  
+# Install one or more versions of specified language
+# e.g. `vmi rust` # => fzf multimode, tab to mark, enter to install
+# if no plugin is supplied (e.g. `vmi<CR>`), fzf will list them for you
+# Mnemonic [V]ersion [M]anager [I]nstall
+vmi() {
+  local lang=${1}
 
- _fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
+  if [[ ! $lang ]]; then
+    lang=$(asdf plugin-list | fzf)
+  fi
+
+  if [[ $lang ]]; then
+    local versions=$(asdf list-all $lang | fzf --tac --no-sort --multi)
+    if [[ $versions ]]; then
+      for version in $(echo $versions);
+      do; asdf install $lang $version; done;
+    fi
+  fi
 }

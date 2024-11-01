@@ -65,7 +65,7 @@ local config = {
         },
       },
       format = {
-        enabled = false,
+        enabled = true,
       },
     },
   },
