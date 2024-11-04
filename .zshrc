@@ -10,7 +10,6 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # Source
 # Source runtime
 source "$HOME/.asdf/asdf.sh"
-source ~/.asdf/plugins/java/set-java-home.zsh
 
 source $HOME/.local/scripts/commands
 
@@ -35,7 +34,6 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 
 # Alias
 alias vim="nvim"
-alias cd="z"
 alias icat="kitten icat"
 alias v="fd -t f -H -E .git -E .venv -L | fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}' | xargs nvim"
 alias ls="eza -la"
@@ -84,11 +82,3 @@ fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit
 compinit -u
 
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit
-compinit -u
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit
-compinit -u
