@@ -15,7 +15,7 @@ AEROSPACE_LIST_OF_WINDOWS_IN_FOCUSED_MONITOR=$(aerospace list-windows --workspac
 
 # Setting up the general bar appearance of the bar
 bar=(
-  height=38
+  height=50
   color=$BAR_COLOR
   border_width=2
   border_color=$BAR_BORDER_COLOR
@@ -27,6 +27,8 @@ bar=(
   y_offset=-5
   margin=-2
   topmost=window
+  color=0x00000000
+  border_color=0x00000000
 )
 
 sketchybar --bar "${bar[@]}"
@@ -66,14 +68,16 @@ sketchybar --default "${defaults[@]}"
 source "$ITEM_DIR/spaces.sh"
 source "$ITEM_DIR/front_app.sh"
 
+# Center
+# source "$ITEM_DIR/media.sh"
+source "$ITEM_DIR/spotify.sh"
+
 # Right
-source "$ITEM_DIR/media.sh"
 source "$ITEM_DIR/calendar.sh"
 source "$ITEM_DIR/battery.sh"
+source "$ITEM_DIR/keyboard.sh"
 
 sketchybar --hotload on
 
 # Forcing all item scripts to run (never do this outside of sketchybarrc)
 sketchybar --update
-
-echo "sketchybar configuation loaded.."

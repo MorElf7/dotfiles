@@ -40,7 +40,6 @@ export PATH="/Users/bcao/.ebcli-virtual-env/executables:$PATH"
 # Alias
 alias vim="nvim"
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
-alias cd="z"
 alias icat="kitten icat"
 alias v="fd -t f -H -E .git -E .venv -L | fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}' | xargs nvim"
 alias ls="eza -la"

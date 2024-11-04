@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 STATE="$(echo "$INFO" | jq -r '.state')"
 if [ "$STATE" = "playing" ]; then
