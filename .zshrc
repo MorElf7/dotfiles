@@ -4,21 +4,16 @@ autoload -Uz compinit
 compinit -u
 
 # Source
-eval "$(/opt/homebrew/bin/brew shellenv)"
+eval $(/opt/homebrew/bin/brew shellenv)
 
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Source runtime
-source "$HOME/.asdf/asdf.sh"
-source ~/.asdf/plugins/java/set-java-home.zsh
-
-source $HOME/.local/scripts/commands
 
 # Export
-eval $(thefuck --alias)
-eval "$(zoxide init zsh)"
-eval "$(fzf --zsh)"
+export CARGO_HOME=$HOME/.asdf/shims/cargo
+export RUSTUP_HOME=$HOME/.asdf/shims/rustup
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export NVM_DIR="$HOME/.nvm"
@@ -38,6 +33,7 @@ esac
 export PATH="/Users/bcao/.ebcli-virtual-env/executables:$PATH"
 
 # Alias
+alias ka="sudo kanata_macos_arm64 -c  $HOME/.config/kanata/kanata.kdb"
 alias vim="nvim"
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
 alias icat="kitten icat"
@@ -83,9 +79,20 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-# Run macchina
-macchina
+
+# Source runtime
+source $HOME/.asdf/asdf.sh
+source $HOME/.asdf/plugins/java/set-java-home.zsh
+source $HOME/.asdf/installs/rust/stable/env
+
+source $HOME/.local/scripts/commands
+
+eval $(thefuck --alias)
+eval "$(zoxide init zsh)"
+eval "$(fzf --zsh)"
 
 # Config starship prompt
 eval "$(starship init zsh)"
 
+# Run macchina
+macchina
