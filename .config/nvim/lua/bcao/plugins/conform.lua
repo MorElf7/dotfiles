@@ -14,6 +14,7 @@ return {
         json = { "prettierd", "prettier", stop_after_first = true },
         cpp = { "clang-format" },
         go = { "gofumpt", "goimports-reviser", "golines" },
+        tex = { "latexindent" },
       },
       format_on_save = {
         -- These options will be passed to conform.format()

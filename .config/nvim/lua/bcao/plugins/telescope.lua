@@ -48,9 +48,6 @@ return {
 
     keymap.set("n", "<leader>ff", "<cmd>lua project_files()<cr>", { desc = "Fuzzy find git files in cwd" })
     keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-    keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "Git branches" })
-    keymap.set("n", "<leader>gst", "<cmd>Telescope git_stash<cr>", { desc = "Git stash" })
-    keymap.set("n", "<leader>ch", "<cmd>Telescope command_history<cr>", { desc = "Nvim command history" })
   end,
   init = function()
     local utils = require("telescope.utils")

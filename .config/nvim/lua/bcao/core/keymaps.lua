@@ -11,20 +11,20 @@ local keymap = vim.keymap -- for conciseness
 -- keymap.set("n", "<C-q>", "<cmd>q!<cr>", { desc = "Quit" })
 
 -- use jk to exit insert mode
-keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
+-- keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
 -- delete single character without copying into register
-keymap.set({ "n", "v" }, "d", "d")
-keymap.set({ "n", "v" }, "c", "c")
-keymap.set({ "n", "v" }, "x", "x")
+-- keymap.set({ "n", "v" }, "d", "d")
+-- keymap.set({ "n", "v" }, "c", "c")
+-- keymap.set({ "n", "v" }, "x", "x")
 
 keymap.set("v", "<leader>p", '"_dP')
 -- keymap.set({ "n", "v" }, "<leader>d", '"_d')
-keymap.set({ "n", "v" }, "<leader>x", '"_x')
-keymap.set({ "n", "v" }, "<leader>c", '"_c')
+-- keymap.set({ "n", "v" }, "<leader>x", '"_x')
+-- keymap.set({ "n", "v" }, "<leader>c", '"_c')
 
 -- increment/decrement numbers
 keymap.set("n", "<C-w>", "<C-a>", { desc = "Increment number" }) -- increment
@@ -48,9 +48,6 @@ keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
 
 keymap.set("n", "<leader>w", "<cmd>noautocmd w<cr>")
-
-keymap.set("n", "<leader>nd", "<cmd>NoiceDismiss<cr>")
-keymap.set("n", "-", "<cmd>Oil<cr>")
 
 keymap.set("n", "j", "gj")
 keymap.set("n", "k", "gk")

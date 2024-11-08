@@ -33,7 +33,6 @@ tmux-sessionizer() {
   tmux_running=$(pgrep tmux)
 
   if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
-    echo "Hello"
       tmux new-session -s $selected_name -c $selected
       return 0
   fi
@@ -49,25 +48,23 @@ tmux-sessionizer() {
   fi
 }
 
-#ASDF Commands
-#-----------------------------  
-# Install one or more versions of specified language
-# e.g. `vmi rust` # => fzf multimode, tab to mark, enter to install
-# if no plugin is supplied (e.g. `vmi<CR>`), fzf will list them for you
-# Mnemonic [V]ersion [M]anager [I]nstall
-vmi() {
-  local lang=${1}
+tmux-personal() {
+  tmux_running=$(pgrep tmux)
+  selected_name="personal"
+  selected=$HOME
 
-  if [[ ! $lang ]]; then
-    lang=$(asdf plugin-list | fzf)
+  if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
+      tmux new-session -s $selected_name -c $selected
+      return 0
   fi
 
-  if [[ $lang ]]; then
-    local versions=$(asdf list-all $lang | fzf --tac --no-sort --multi)
-    if [[ $versions ]]; then
-      for version in $(echo $versions);
-      do; asdf install $lang $version; done;
-    fi
+  if ! tmux has-session -t=$selected_name 2> /dev/null; then
+      tmux new-session -ds $selected_name -c $selected
+  fi
+
+  if [[ -n $TMUX ]]; then
+    tmux switch-client -t $selected_name
+  else
+    tmux attach -t $selected_name
   fi
 }
-

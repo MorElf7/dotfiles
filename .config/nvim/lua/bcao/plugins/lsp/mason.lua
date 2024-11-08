@@ -35,7 +35,8 @@ return {
         "jdtls",
         "gopls",
         "texlab",
-        "ruff_lsp",
+        "ruff",
+        "marksman",
       },
 
       -- auto-install configured servers (with lspconfig)

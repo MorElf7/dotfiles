@@ -31,6 +31,12 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 export PATH="/Users/bcao/.ebcli-virtual-env/executables:$PATH"
+export PATH="/Library/TeX/texbin/:$PATH"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
+
 
 # Alias
 alias ka="sudo kanata_macos_arm64 -c  $HOME/.config/kanata/kanata.kdb"
@@ -52,8 +58,8 @@ alias rm='rm -i'
 
 
 # Keybinds
-bindkey -r "^G"
 bindkey -s "^F" "tmux-sessionizer\n"
+bindkey -s "^G" "tmux-personal\n"
 bindkey "^E" vi-forward-blank-word
 bindkey "^B" vi-backward-blank-word
 
