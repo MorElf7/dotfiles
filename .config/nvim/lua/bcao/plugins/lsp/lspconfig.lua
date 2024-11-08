@@ -96,6 +96,13 @@ return {
       filetypes = { "css" },
     })
 
+    -- configure markdown server
+    lspconfig["marksman"].setup({
+      capabilities = capabilities,
+      on_attach = on_attach,
+      filetypes = { "markdown" },
+    })
+
     -- -- configure java server
     -- lspconfig["jdtls"].setup({
     --   capabilities = capabilities,
@@ -149,7 +156,7 @@ return {
     })
 
     -- configure python server
-    lspconfig["ruff_lsp"].setup({
+    lspconfig["ruff"].setup({
       capabilities = capabilities,
       on_attach = on_attach,
       filetypes = { "python" },

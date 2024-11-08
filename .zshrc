@@ -8,6 +8,7 @@ source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Source
+<<<<<<< HEAD
 # Source runtime
 source "$HOME/.asdf/asdf.sh"
 
@@ -21,6 +22,18 @@ eval "$(starship init zsh)"
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
+=======
+eval $(/opt/homebrew/bin/brew shellenv)
+
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+
+# Export
+export CARGO_HOME=$HOME/.asdf/shims/cargo
+export RUSTUP_HOME=$HOME/.asdf/shims/rustup
+
+>>>>>>> origin/master
 export XDG_CONFIG_HOME="$HOME/.config"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export NVM_DIR="$HOME/.nvm"
@@ -31,8 +44,23 @@ export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git --excl
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude .venv"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+<<<<<<< HEAD
+=======
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+export PATH="/Users/bcao/.ebcli-virtual-env/executables:$PATH"
+export PATH="/Library/TeX/texbin/:$PATH"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
+
+>>>>>>> origin/master
 
 # Alias
+alias ka="sudo kanata_macos_arm64 -c  $HOME/.config/kanata/kanata.kdb"
 alias vim="nvim"
 alias icat="kitten icat"
 alias v="fd -t f -H -E .git -E .venv -L | fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}' | xargs nvim"
@@ -50,8 +78,8 @@ alias rm='rm -i'
 
 
 # Keybinds
-bindkey -r "^G"
 bindkey -s "^F" "tmux-sessionizer\n"
+bindkey -s "^G" "tmux-personal\n"
 bindkey "^E" vi-forward-blank-word
 bindkey "^B" vi-backward-blank-word
 
@@ -74,11 +102,22 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
-# Run macchina
-macchina
+
+# Source runtime
+source $HOME/.asdf/asdf.sh
+source $HOME/.asdf/plugins/java/set-java-home.zsh
+source $HOME/.asdf/installs/rust/stable/env
+
+source $HOME/.local/scripts/commands
+
+eval $(thefuck --alias)
+eval "$(zoxide init zsh)"
+eval "$(fzf --zsh)"
 
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit
 compinit -u
 
+# Run macchina
+macchina
