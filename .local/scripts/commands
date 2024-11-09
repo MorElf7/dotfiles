@@ -58,14 +58,6 @@ tmux-personal() {
       return 0
   fi
 
-<<<<<<< HEAD
-  if [[ $lang ]]; then
-    local versions=$(asdf list-all $lang | fzf --tac --no-sort --multi)
-    if [[ $versions ]]; then
-      for version in $(echo $versions);
-      do; asdf install $lang $version; done;
-    fi
-=======
   if ! tmux has-session -t=$selected_name 2> /dev/null; then
       tmux new-session -ds $selected_name -c $selected
   fi
@@ -74,6 +66,5 @@ tmux-personal() {
     tmux switch-client -t $selected_name
   else
     tmux attach -t $selected_name
->>>>>>> origin/master
   fi
 }

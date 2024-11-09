@@ -67,7 +67,7 @@ URxvt.underlineURLs: true
 URxvt.urlButton: 1
 
 !! Retina Display Settings
-Xft.dpi: 96
+/* Xft.dpi: 96 */
 
 Xft.autohint: 0
 Xft.lcdfilter: lcddefault
