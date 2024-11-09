@@ -1,14 +1,5 @@
-# append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit
-compinit -u
 
-# Source
 eval $(/opt/homebrew/bin/brew shellenv)
-
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 
 # Export
 export CARGO_HOME=$HOME/.asdf/shims/cargo
@@ -37,6 +28,10 @@ export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 
+# append completions to fpath
+fpath=(${ASDF_DIR}/completions $fpath)
+autoload -Uz compinit
+compinit -u
 
 # Alias
 alias ka="sudo kanata_macos_arm64 -c  $HOME/.config/kanata/kanata.kdb"
@@ -90,6 +85,8 @@ _fzf_compgen_dir() {
 source $HOME/.asdf/asdf.sh
 source $HOME/.asdf/plugins/java/set-java-home.zsh
 source $HOME/.asdf/installs/rust/stable/env
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source $HOME/.local/scripts/commands
 
