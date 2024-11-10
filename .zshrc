@@ -79,7 +79,7 @@ _fzf_compgen_dir() {
 # Source runtime
 source "/opt/asdf-vm/asdf.sh"
 
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 source $HOME/.local/scripts/commands
