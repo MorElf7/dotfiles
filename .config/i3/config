@@ -8,8 +8,8 @@
 #
 
 
-# Set Mod Key to Alt
-set $mod Mod1
+# Set Mod Key to Super
+set $mod Mod4
 
 ## APPEARANCE
 
