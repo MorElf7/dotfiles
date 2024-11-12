@@ -56,10 +56,18 @@ return {
       },
       sections = {
         lualine_x = {
+          -- {
+          --   lazy_status.updates,
+          --   cond = lazy_status.has_updates,
+          --   color = { fg = "#ff9e64" },
+          -- },
           {
-            lazy_status.updates,
-            cond = lazy_status.has_updates,
-            color = { fg = "#ff9e64" },
+            require("noice").api.status.command.get,
+            cond = require("noice").api.status.command.has,
+          },
+          {
+            require("noice").api.status.mode.get,
+            cond = require("noice").api.status.mode.has,
           },
           { "encoding" },
           { "fileformat" },

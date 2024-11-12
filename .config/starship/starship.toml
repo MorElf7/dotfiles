@@ -24,7 +24,6 @@ $gradle\
 $lua\
 $nodejs\
 $python\
-$cmd_duration\
 """
 
 # Themes

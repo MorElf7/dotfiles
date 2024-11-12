@@ -2,8 +2,8 @@
 eval $(/opt/homebrew/bin/brew shellenv)
 
 # Export
-export CARGO_HOME=$HOME/.asdf/shims/cargo
-export RUSTUP_HOME=$HOME/.asdf/shims/rustup
+# export CARGO_HOME=$HOME/.asdf/shims/cargo
+# export RUSTUP_HOME=$HOME/.asdf/shims/rustup
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
@@ -29,9 +29,13 @@ export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 
 # append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
-autoload -Uz compinit
-compinit -u
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  fpath=(${ASDF_DIR}/completions $fpath)
+  
+  autoload -Uz compinit
+  compinit
+fi
 
 # Alias
 alias ka="sudo kanata_macos_arm64 -c  $HOME/.config/kanata/kanata.kdb"
@@ -82,9 +86,8 @@ _fzf_compgen_dir() {
 
 
 # Source runtime
-source $HOME/.asdf/asdf.sh
+source /opt/homebrew/opt/asdf/libexec/asdf.sh
 source $HOME/.asdf/plugins/java/set-java-home.zsh
-source $HOME/.asdf/installs/rust/stable/env
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -99,3 +102,4 @@ eval "$(starship init zsh)"
 
 # Run macchina
 macchina
+

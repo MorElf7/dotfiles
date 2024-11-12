@@ -3,8 +3,7 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
 
----------------------
--- General Keymaps -------------------
+---------------------General Keymaps -------------------
 
 -- Ctrl + s for save
 -- keymap.set("n", "<C-s>", "<cmd>w<cr>", { desc = "Write buffer" })
@@ -21,7 +20,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 -- keymap.set({ "n", "v" }, "c", "c")
 -- keymap.set({ "n", "v" }, "x", "x")
 
-keymap.set("v", "<leader>p", '"_dP')
+-- keymap.set("v", "<leader>p", '"_dP')
 -- keymap.set({ "n", "v" }, "<leader>d", '"_d')
 -- keymap.set({ "n", "v" }, "<leader>x", '"_x')
 -- keymap.set({ "n", "v" }, "<leader>c", '"_c')
@@ -51,3 +50,9 @@ keymap.set("n", "<leader>w", "<cmd>noautocmd w<cr>")
 
 keymap.set("n", "j", "gj")
 keymap.set("n", "k", "gk")
+
+keymap.set({ "n", "v", "x" }, "<leader>y", '"+y', { desc = "Yank to clipboard" })
+keymap.set({ "n", "v", "x" }, "<leader>yy", '"+yy', { desc = "Yank line to clipboard" })
+keymap.set({ "n", "v", "x" }, "<leader>p", '"+p', { desc = "Paste from clipboard" })
+keymap.set("i", "<C-p>", "<C-r>+", { desc = "Paste from clipboard from within insert mode" })
+keymap.set("x", "<leader>P", '"_dP', { desc = "Paste over selection without erasing unnamed register" })
