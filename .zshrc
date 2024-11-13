@@ -1,4 +1,3 @@
-
 eval $(/opt/homebrew/bin/brew shellenv)
 
 # Export
@@ -34,7 +33,10 @@ if type brew &>/dev/null; then
   fpath=(${ASDF_DIR}/completions $fpath)
   
   autoload -Uz compinit
-  compinit
+  if [ "$(find ~/.zcompdump -mtime 1)" ] ; then
+      compinit
+  fi
+  compinit -C
 fi
 
 # Alias
@@ -102,4 +104,3 @@ eval "$(starship init zsh)"
 
 # Run macchina
 macchina
-
