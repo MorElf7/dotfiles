@@ -50,7 +50,7 @@ floating_maximum_size 1920 x 1080
 # start a terminal
 bindsym $mod+Return exec kitty
 
-# start firefox
+# start brave
 bindsym $mod+w exec brave
 
 # kill focused window
@@ -67,12 +67,6 @@ bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
@@ -210,8 +204,8 @@ exec --no-startup-id picom
 
 
 # Startup application and workspaces
-exec --no-startup-id firefox
-for_window [class="firefox"] move to workspace number $ws2
+exec --no-startup-id brave
+for_window [class="Brave-browser"] move to workspace number $ws2
 
 exec --no-startup-id kitty
 for_window [class="kitty"] move to workspace number $ws1
