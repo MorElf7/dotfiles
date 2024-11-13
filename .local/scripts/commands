@@ -22,7 +22,7 @@ tmux-sessionizer() {
   if [[ $# -eq 1 ]]; then
       selected=$1
   else
-      selected=$(fd -t d -d 1 . '/Users/bcao/Documents/course' '/Users/bcao/Documents/projects' | fzf)
+      selected=$(fd -t d -d 1 . '/home/morelf/Documents/course' '/home/morelf/Documents/projects' | fzf)
   fi
 
   if [[ -z $selected ]]; then
