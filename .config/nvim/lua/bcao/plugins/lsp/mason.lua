@@ -29,7 +29,7 @@ return {
         "cssls",
         "lua_ls",
         "pyright",
-        -- "clangd",
+        "clangd",
         "jdtls",
         -- "csharp_ls",
         "jdtls",

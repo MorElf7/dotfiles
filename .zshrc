@@ -4,8 +4,8 @@ if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
 fi
 
 # Export
-export CARGO_HOME=$HOME/.asdf/shims/cargo
-export RUSTUP_HOME=$HOME/.asdf/shims/rustup
+# export CARGO_HOME=$HOME/.asdf/shims/cargo
+# export RUSTUP_HOME=$HOME/.asdf/shims/rustup
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
@@ -31,7 +31,10 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
 autoload -Uz compinit
-compinit -u
+if [ "$(find ~/.zcompdump -mtime 1)" ] ; then
+    compinit
+fi
+compinit -C
 
 # Alias
 alias ka="sudo kanata_macos_arm64 -c  $HOME/.config/kanata/kanata.kdb"
@@ -68,6 +71,9 @@ setopt hist_verify
 
 setopt autocd
 
+# Created by `pipx` on 2024-06-21 03:46:11
+export PATH="$PATH:/Users/bcao/.local/bin"
+
 _fzf_compgen_path() {
   fd --hidden --exclude .git . "$1"
 }
@@ -90,7 +96,6 @@ eval "$(fzf --zsh)"
 
 # Config starship prompt
 eval "$(starship init zsh)"
-
 
 # Run macchina
 macchina
