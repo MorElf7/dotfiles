@@ -46,7 +46,47 @@ config.debug_key_events = true
 config.enable_kitty_graphics = true
 config.enable_kitty_keyboard = true
 config.max_fps = 120
+config.native_macos_fullscreen_mode = true
 
 -- Keybinds
+config.disable_default_key_bindings = true
+config.keys = {
+	{
+		key = "v",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.PasteFrom("Clipboard"),
+	},
+	{
+		key = "c",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.CopyTo("Clipboard"),
+	},
+	{
+		key = "m",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.ToggleFullScreen,
+	},
+	{
+		key = "=",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.IncreaseFontSize,
+	},
+	{
+		key = "-",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.DecreaseFontSize,
+	},
+	{
+		key = "Enter",
+		mods = "SUPER",
+		action = wezterm.action.SpawnWindow,
+	},
+	{
+		key = "w",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.CloseCurrentTab({ confirm = true }),
+	},
+	{ key = "q", mods = "SUPER", action = wezterm.action.QuitApplication },
+}
 
 return config
