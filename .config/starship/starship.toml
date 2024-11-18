@@ -3,7 +3,7 @@
 
 palette = "catppuccin_mocha"
 add_newline = true
-format = """
+format = """  
 $os\
 $username\
 $hostname\

@@ -10,7 +10,7 @@ export NVM_DIR="$HOME/.nvm"
 export ESP_IDF_MONITOR_CFGFILE="$HOME/esp-idf-monitor.cfg"
 export EDITOR="nvim"
 export VISUAL="nvim"
-export BAT_THEME="kanagawa"
+export BAT_THEME="Catppuccin Mocha"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git --exclude .venv"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude .venv"
@@ -66,13 +66,12 @@ bindkey "^B" vi-backward-blank-word
 
 # Better command history
 HISTFILE=$HOME/.zhistory
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=5000
+SAVEHIST=5000
 setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
-
 setopt autocd
 
 # Created by `pipx` on 2024-06-21 03:46:11
@@ -101,6 +100,11 @@ eval "$(fzf --zsh)"
 
 # Config starship prompt
 eval "$(starship init zsh)"
+
+# Connect to tmux on shell creation
+if [[ -z $TMUX ]]; then
+  tmux-personal
+fi
 
 # Run macchina
 macchina
