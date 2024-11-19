@@ -1,12 +1,7 @@
 return {
-    "goolord/alpha-nvim",
-    enabled = false,
+    "mhinz/vim-startify",
     config = function()
-        local alpha = require("alpha")
-        local dashboard = require("alpha.themes.dashboard")
-
-        -- Set header
-        dashboard.section.header.val = {
+        vim.g.startify_custom_header = {
             "                                                     ",
             "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
             "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
@@ -17,22 +12,12 @@ return {
             "                                                     ",
         }
 
-        -- Set menu
-        dashboard.section.buttons.val = {
-            dashboard.button("e", "  > New file", ":ene <BAR> startinsert <CR>"),
-            dashboard.button("f", "󰮗  > Find file", ":Telescope find_files<CR>"),
-            dashboard.button("r", "  > Recent", ":Telescope oldfiles<CR>"),
-            dashboard.button("w", "  > Find text", ":Telescope live_grep<CR>"),
-            dashboard.button("s", "  > Settings", ":e $MYVIMRC | :cd %:p:h <CR>"),
-            dashboard.button("l", "  > LazyUI", ":Lazy<CR>"),
+        vim.g.startify_commands = {
+            { s = { "Settings", "e $MYVIMRC | cd %:p:h" } },
+            { l = { "Lazy", "Lazy" } },
         }
-
-        -- Send config to alpha
-        alpha.setup(dashboard.opts)
-
-        -- Disable folding on alpha buffer
-        vim.cmd([[
-    autocmd FileType alpha setlocal nofoldenable
-]])
+        vim.g.startify_bookmarks = {
+            { z = "~/.zshrc" },
+        }
     end,
 }

@@ -3,6 +3,7 @@ eval $(/opt/homebrew/bin/brew shellenv)
 # Export
 # export CARGO_HOME=$HOME/.asdf/shims/cargo
 # export RUSTUP_HOME=$HOME/.asdf/shims/rustup
+BREW_PREFIX=$(brew --prefix)
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
@@ -22,14 +23,14 @@ case ":$PATH:" in
 esac
 export PATH="/Users/bcao/.ebcli-virtual-env/executables:$PATH"
 export PATH="/Library/TeX/texbin/:$PATH"
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
+export PATH="$BREW_PREFIX/opt/curl/bin:$PATH"
+export LDFLAGS="-L$BREW_PREFIX/opt/curl/lib"
+export CPPFLAGS="-I$BREW_PREFIX/opt/curl/include"
+export PKG_CONFIG_PATH="$BREW_PREFIX/opt/curl/lib/pkgconfig"
 
 # append completions to fpath
 if type brew &>/dev/null; then
-  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+  FPATH=$BREW_PREFIX/share/zsh-completions:$FPATH
   fpath=(${ASDF_DIR}/completions $fpath)
   
   autoload -Uz compinit
@@ -40,10 +41,10 @@ if type brew &>/dev/null; then
 fi
 
 # Alias
+alias ip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 alias ka="sudo kanata_macos_arm64 -c  $HOME/.config/kanata/kanata.kdb"
 alias vim="nvim"
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
-alias icat="kitten icat"
 alias v="fd -t f -H -E .git -E .venv -L | fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}' | xargs nvim"
 alias ls="eza -la"
 alias sed="gsed"
@@ -85,14 +86,16 @@ _fzf_compgen_dir() {
   fd --type=d --hidden --exclude .git . "$1"
 }
 
+# Connect to tmux on shell creation
+# if [[ -z $TMUX ]]; then
+#   tmux-personal
+# fi
+
+# Run macchina
+macchina
 
 # Source runtime
-source /opt/homebrew/opt/asdf/libexec/asdf.sh
-source $HOME/.asdf/plugins/java/set-java-home.zsh
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-source $HOME/.local/scripts/commands
+source $HOME/.local/scripts/commands.sh
 
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
@@ -101,10 +104,7 @@ eval "$(fzf --zsh)"
 # Config starship prompt
 eval "$(starship init zsh)"
 
-# Connect to tmux on shell creation
-if [[ -z $TMUX ]]; then
-  tmux-personal
-fi
-
-# Run macchina
-macchina
+source $BREW_PREFIX/opt/asdf/libexec/asdf.sh
+source $HOME/.asdf/plugins/java/set-java-home.zsh
+source $BREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $BREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

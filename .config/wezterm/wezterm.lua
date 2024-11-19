@@ -7,21 +7,36 @@ config.color_scheme = "Catppuccin Mocha"
 
 -- Font
 config.font = wezterm.font_with_fallback({
+	-- {
+	-- 	family = "BlexMono Nerd Font Mono",
+	-- 	weight = "Regular",
+	-- },
+	-- {
+	-- 	family = "CommitMono Nerd Font Mono",
+	-- 	weight = "Regular",
+	-- 	harfbuzz_features = { "calt", "liga", "ss02", "ss03", "ss04", "ss05", "csv02", "cv05" },
+	-- },
+	{
+		family = "MonaspiceNe Nerd Font Mono",
+		weight = "Regular",
+		harfbuzz_features = { "calt", "liga", "ss03", "ss07", "ss09" },
+	},
+	-- {
+	-- 	family = "JetBrainsMono Nerd Font",
+	-- 	weight = "Regular",
+	-- 	harfbuzz_features = { "zero", "cv14", "cv01", "cv02", "ss05", "ss04", "cv18", "ss03", "cv15" },
+	-- },
 	{
 		family = "FiraCode Nerd Font Mono",
-		weight = "Medium",
-		stretch = "Normal",
-		harfbuzz_features = { "calt=0", "zero", "cv14", "cv01", "cv02", "ss05", "ss04", "cv18", "ss03", "cv15" },
+		weight = "Regular",
+		harfbuzz_features = { "calt", "zero", "cv14", "cv01", "cv02", "ss05", "ss04", "cv18", "ss03", "cv15" },
 	},
-	{ family = "JetBrainsMono Nerd Font", weight = "Medium" },
-	{ family = "SF Pro", weight = "Medium" },
+	{ family = "SF Pro", weight = "Regular" },
 })
 config.font_size = 13
 config.front_end = "WebGpu"
 config.freetype_load_target = "Normal"
--- config.line_height = 1.15
--- config.cell_width = 1.00
--- config.freetype_load_flags = "NO_HINTING"
+config.freetype_load_flags = "NO_HINTING"
 
 -- Scrollback
 config.scrollback_lines = 50000
@@ -29,7 +44,7 @@ config.enable_scroll_bar = false
 
 -- Window Appearance
 config.window_padding = {
-	left = 5,
+	left = 0,
 	right = 0,
 	top = 0,
 	bottom = 0,
@@ -80,6 +95,11 @@ config.keys = {
 		key = "Enter",
 		mods = "SUPER",
 		action = wezterm.action.SpawnWindow,
+	},
+	{
+		key = "w",
+		mods = "SUPER",
+		action = wezterm.action.CloseCurrentTab({ confirm = true }),
 	},
 	{
 		key = "w",
