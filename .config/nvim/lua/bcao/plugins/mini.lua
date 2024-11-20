@@ -2,18 +2,36 @@ return {
     {
         "echasnovski/mini.indentscope",
         version = false,
-        config = function()
-            require("mini.indentscope").setup({
-                draw = {
-                    delay = 0,
+        events = { "BufRead", "BufNewFile" },
+        opts = {
+            draw = {
+                delay = 100,
+            },
+            symbol = "│",
+            options = { try_as_border = true },
+        },
+        init = function()
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = {
+                    "Trouble",
+                    "startify",
+                    "alpha",
+                    "help",
+                    "lazy",
+                    "mason",
+                    "notify",
+                    "oil",
                 },
-                symbol = "▏",
+                callback = function()
+                    vim.b.miniindentscope_disable = true
+                end,
             })
         end,
     },
     {
         "echasnovski/mini.surround",
         version = false,
+        events = { "BufRead", "BufNewFile" },
         config = function()
             require("mini.surround").setup()
         end,
@@ -21,6 +39,7 @@ return {
     {
         "echasnovski/mini.ai",
         version = false,
+        events = { "BufRead", "BufNewFile" },
         config = function()
             require("mini.ai").setup()
         end,
@@ -31,6 +50,7 @@ return {
             "JoosepAlviste/nvim-ts-context-commentstring",
         },
         version = false,
+        events = { "BufRead", "BufNewFile" },
         config = function()
             vim.g.skip_ts_context_commentstring_module = true
             require("ts_context_commentstring").setup({
