@@ -64,6 +64,8 @@ bindkey -s "^F" "tmux-sessionizer\n"
 bindkey -s "^G" "tmux-personal\n"
 bindkey "^E" vi-forward-blank-word
 bindkey "^B" vi-backward-blank-word
+bindkey "^O" clear-screen
+
 
 # Better command history
 HISTFILE=$HOME/.zhistory

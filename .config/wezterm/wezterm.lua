@@ -14,7 +14,7 @@ config.font = wezterm.font_with_fallback({
 	-- {
 	-- 	family = "CommitMono Nerd Font Mono",
 	-- 	weight = "Regular",
-	-- 	harfbuzz_features = { "calt", "liga", "ss02", "ss03", "ss04", "ss05", "csv02", "cv05" },
+	-- 	harfbuzz_features = { "calt", "liga", "ss02", "ss03", "ss04", "ss05", "cv02", "cv05" },
 	-- },
 	{
 		family = "MonaspiceNe Nerd Font Mono",
@@ -56,6 +56,7 @@ config.window_decorations = "RESIZE"
 config.audible_bell = "Disabled"
 
 -- Misc
+config.term = "wezterm"
 config.automatically_reload_config = true
 config.debug_key_events = true
 config.enable_kitty_graphics = true

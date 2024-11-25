@@ -7,5 +7,4 @@ wifi=(
 )
 sketchybar --add item wifi right \
            --set wifi "${wifi[@]}"\
-           --subscribe wifi_change wifi
-
+           --subscribe wifi_change wifi system_woke

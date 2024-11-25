@@ -99,6 +99,9 @@ format = '[$symbol($version)]($style) '
 symbol = " "
 format = '[$symbol($version)]($style) '
 
+[os]
+disabled = false
+
 [os.symbols]
 Alpaquita = " "
 Alpine = " "

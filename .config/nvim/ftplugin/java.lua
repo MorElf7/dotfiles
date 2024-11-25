@@ -108,9 +108,6 @@ config["on_attach"] = function(client, bufnr)
     opts.desc = "Show buffer diagnostics"
     keymap.set("n", "<leader>bd", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
-    opts.desc = "Show line diagnostics"
-    keymap.set("n", "<leader>ld", vim.diagnostic.open_float, opts) -- show diagnostics for line
-
     opts.desc = "Go to previous diagnostic"
     keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
 

@@ -21,6 +21,31 @@ return {
         require("luasnip.loaders.from_vscode").lazy_load()
 
         cmp.setup({
+            enabled = function()
+                local bufs = {
+                    "prompt",
+                }
+                local buftype = vim.bo.buftype
+                for _, b in ipairs(bufs) do
+                    if buftype == b then
+                        return false
+                    end
+                end
+
+                local files = {
+                    "oil",
+                }
+
+                local filetype = vim.bo.filetype
+
+                for _, f in ipairs(files) do
+                    if filetype == f then
+                        return false
+                    end
+                end
+
+                return true
+            end,
             completion = {
                 completeopt = "menu,menuone,preview,noselect",
             },

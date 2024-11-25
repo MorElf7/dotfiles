@@ -13,7 +13,7 @@ return {
         }
 
         vim.g.startify_commands = {
-            { s = { "Settings", "e $MYVIMRC | cd %:p:h" } },
+            { s = { "Settings", "e $MYVIMRC | cd $HOME/dotfiles" } },
             { l = { "Lazy", "Lazy" } },
         }
         vim.g.startify_bookmarks = {

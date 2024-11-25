@@ -52,7 +52,9 @@ return {
         lualine.setup({
             options = {
                 -- theme = my_lualine_theme,
-                theme = "auto",
+                theme = "catppuccin",
+                -- component_separators = { left = " ", right = " " },
+                -- section_separators = { left = "", right = "" },
             },
             sections = {
                 lualine_x = {
