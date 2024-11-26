@@ -6,7 +6,6 @@
 ! ██╔╝ ██╗██║  ██║███████╗███████║╚██████╔╝╚██████╔╝██║  ██║╚██████╗███████╗███████║
 ! ╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚══════╝╚══════╝
 !
-! Xresources Config File by Arfan Zubi
 
 
 !! Appearance
@@ -26,34 +25,41 @@ URxvt.urgentOnBell: true
 URxvt.depth: 32
 URxvt.iso14755: false
 
-!! Colorscheme
-*background: #1F1F28
-*foreground: #DCD7BA
+*background: #1e1e2e
+*foreground: #cdd6f4
+*cursorColor: #f5e0dc
 
-*color0: #090618
-*color8: #727169
+! black
+*color0: #45475a
+*color8: #585b70
 
-*color1: #C34043
-*color9: #E82424
+! red
+*color1: #f38ba8
+*color9: #f38ba8
 
-*color2: #76946A
-*color10: #98BB6C
+! green
+*color2: #a6e3a1
+*color10: #a6e3a1
 
-! *color3: #FFA066
-*color3: #C0A36E
-*color11: #E6C384
+! yellow
+*color3: #f9e2af
+*color11: #f9e2af
 
-*color4: #7E9CD8
-*color12: #7FB4CA
+! blue
+*color4: #89b4fa
+*color12: #89b4fa
 
-*color5: #957FB8
-*color13: #938AA9
+! magenta
+*color5: #f5c2e7
+*color13: #f5c2e7
 
-*color6: #6A9589
-*color14: #7AA89F
+! cyan
+*color6: #94e2d5
+*color14: #94e2d5
 
-*color7: #C8C093
-*color15: #DCD7BA
+! white
+*color7: #bac2de
+*color15: #a6adc8
 
 !! Extensions
 URxvt.perl-ext-common: default,resize-font

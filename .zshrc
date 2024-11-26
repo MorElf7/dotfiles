@@ -12,7 +12,7 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export NVM_DIR="$HOME/.nvm"
 export EDITOR="nvim"
 export VISUAL="nvim"
-export BAT_THEME="kanagawa"
+export BAT_THEME="Catppuccin Mocha"
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git --exclude .venv"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude .venv"
@@ -23,7 +23,9 @@ case ":$PATH:" in
 esac
 export PATH="/Users/bcao/.ebcli-virtual-env/executables:$PATH"
 export PATH="/Library/TeX/texbin/:$PATH"
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+# export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
@@ -37,9 +39,11 @@ fi
 compinit -C
 
 # Alias
-alias ka="sudo kanata_macos_arm64 -c  $HOME/.config/kanata/kanata.kdb"
-alias vim="nvim"
-alias icat="kitten icat"
+
+# Only on Acer Nitro 5. Update name if needed
+alias dual-monitor="xrandr --output HDMI-1-0 --primary --auto --output eDP-1 --auto --left-of HDMI-1-0"
+
+alias ka="sudo $(which kanata) -c $HOME/.config/kanata/qwerty.kbd"
 alias v="fd -t f -H -E .git -E .venv -L | fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}' | xargs nvim"
 alias ls="eza -la"
 alias sed="gsed"
@@ -53,12 +57,12 @@ alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
-
 # Keybinds
 bindkey -s "^F" "tmux-sessionizer\n"
 bindkey -s "^G" "tmux-personal\n"
 bindkey "^E" vi-forward-blank-word
 bindkey "^B" vi-backward-blank-word
+bindkey "^O" clear-screen
 
 # Better command history
 HISTFILE=$HOME/.zhistory
@@ -83,13 +87,6 @@ _fzf_compgen_dir() {
 }
 
 # Source runtime
-source "/opt/asdf-vm/asdf.sh"
-
-source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-source $HOME/.local/scripts/commands
-
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
@@ -99,3 +96,10 @@ eval "$(starship init zsh)"
 
 # Run macchina
 macchina
+
+source $HOME/.local/scripts/commands
+
+source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+

@@ -7,15 +7,11 @@
 # ██╔╝ ██╗██║██║ ╚████║██║   ██║   ██║  ██║╚██████╗
 # ╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝╚═╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝
 #
-# Xinit Config File by Arfan Zubi
 
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
-
-# intern=eDP1
-# extern=HDMI2
 
 # Merge in Defaults and Keymaps
 
@@ -34,13 +30,6 @@ fi
 if [ -f "$usermodmap" ]; then
 	xmodmap "$usermodmap"
 fi
-
-# # Toggle external monitor
-# if xrandr | grep "$extern disconnected"; then
-# 	xrandr --output "$intern" --auto --output "$extern" --off
-# else
-# 	xrandr --output "$intern" --primary --auto --output "$extern" --auto --above "$intern"
-# fi
 
 
 # Start i3 Window Manager when starting X Server
