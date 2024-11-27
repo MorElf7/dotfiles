@@ -16,11 +16,11 @@ set $mod Mod4
 # Exec polybar at startup and after refreshing i3
 exec_always --no-startup-id killall -q polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-fill $HOME/dotfiles/wallpaper/Cloudsnight.jpg
+exec_always --no-startup-id feh --bg-scale $HOME/.dotfiles/wallpaper/Cloudsnight.jpg
 
 # Gap Size
-gaps inner 3
-gaps outer 3
+gaps inner 10
+gaps outer 5
 
 # Hide Title Bar
 for_window [class="^.*"] border pixel 3

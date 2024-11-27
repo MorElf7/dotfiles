@@ -13,8 +13,8 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-extern=HDMI-1-0
-intern=eDP-1
+extern=HDMI-0
+intern=eDP-1-1
 
 # Merge in Defaults and Keymaps
 

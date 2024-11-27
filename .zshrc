@@ -38,7 +38,7 @@ compinit -C
 # Alias
 
 # Only on Acer Nitro 5. Update name if needed
-alias dual-monitor="xrandr --output HDMI-1-0 --primary --auto --output eDP-1 --auto --left-of HDMI-1-0"
+alias dual-monitor="xrandr --output HDMI-0 --primary --auto --output eDP-1-1 --auto --left-of HDMI-0"
 alias ip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 
 alias ka="sudo $(which kanata) -c $HOME/.config/kanata/qwerty.kbd"
@@ -65,9 +65,6 @@ setopt hist_verify
 
 setopt autocd
 
-# Created by `pipx` on 2024-06-21 03:46:11
-export PATH="$PATH:/Users/bcao/.local/bin"
-
 _fzf_compgen_path() {
   fd --hidden --exclude .git . "$1"
 }
@@ -80,6 +77,7 @@ _fzf_compgen_dir() {
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
+eval "$(register-python-argcomplete pipx)"
 
 # Config starship prompt
 eval "$(starship init zsh)"
@@ -89,9 +87,8 @@ macchina
 
 source $HOME/.local/scripts/commands
 
-source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source $HOME/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Keybinds
 bindkey -s "^F" "tmux-sessionizer\n"
