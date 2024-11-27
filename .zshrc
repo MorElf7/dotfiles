@@ -54,12 +54,6 @@ alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
-# Keybinds
-bindkey -s "^F" "tmux-sessionizer\n"
-bindkey -s "^G" "tmux-personal\n"
-bindkey "^O" clear-screen
-bindkey -v
-
 # Better command history
 HISTFILE=$HOME/.zhistory
 HISTSIZE=10000
@@ -96,5 +90,12 @@ macchina
 source $HOME/.local/scripts/commands
 
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOME/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+# source $HOME/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Keybinds
+bindkey -s "^F" "tmux-sessionizer\n"
+bindkey -s "^G" "tmux-personal\n"
+bindkey "^O" clear-screen
+bindkey -v
+
