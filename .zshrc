@@ -4,8 +4,6 @@ if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
 fi
 
 # Export
-# export CARGO_HOME=$HOME/.asdf/shims/cargo
-# export RUSTUP_HOME=$HOME/.asdf/shims/rustup
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
@@ -23,7 +21,6 @@ case ":$PATH:" in
 esac
 export PATH="/Users/bcao/.ebcli-virtual-env/executables:$PATH"
 export PATH="/Library/TeX/texbin/:$PATH"
-# export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
@@ -42,11 +39,11 @@ compinit -C
 
 # Only on Acer Nitro 5. Update name if needed
 alias dual-monitor="xrandr --output HDMI-1-0 --primary --auto --output eDP-1 --auto --left-of HDMI-1-0"
+alias ip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 
 alias ka="sudo $(which kanata) -c $HOME/.config/kanata/qwerty.kbd"
 alias v="fd -t f -H -E .git -E .venv -L | fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}' | xargs nvim"
 alias ls="eza -la"
-alias sed="gsed"
 alias grep='grep --color=auto'
 alias g='lazygit'
 alias gp="git pull"
@@ -60,9 +57,8 @@ alias rm='rm -i'
 # Keybinds
 bindkey -s "^F" "tmux-sessionizer\n"
 bindkey -s "^G" "tmux-personal\n"
-bindkey "^E" vi-forward-blank-word
-bindkey "^B" vi-backward-blank-word
 bindkey "^O" clear-screen
+bindkey -v
 
 # Better command history
 HISTFILE=$HOME/.zhistory
@@ -100,6 +96,5 @@ macchina
 source $HOME/.local/scripts/commands
 
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.zsh/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-

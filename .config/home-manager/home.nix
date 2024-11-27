@@ -1,17 +1,5 @@
 { config, pkgs, inputs, ... }:
 
-let 
-tmux-sessionx = pkgs.tmuxPlugins.mkTmuxPlugin {
-    pluginName = "tmux-sessionx";
-    version = "unstable-2024-11-25";
-    src = pkgs.fetchFromGitHub {
-      owner = "omerxx";
-      repo = "tmux-sessionx";
-      rev = "c2eb0e19bf3ffba2b64e1ab63cdf37cb61f53e3c";
-      sha256 = "sha256-5f2lADOgCSSfFrPy9uiTomtjSZPkEAMEDu4/TdDYXlk=";
-    };
-  };
-in
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -35,7 +23,6 @@ in
     pkgs.neovim
     pkgs.zsh
     pkgs.tmux
-    tmux-sessionx
     pkgs.fzf
     pkgs.bat
     pkgs.fd
@@ -49,11 +36,13 @@ in
     pkgs.xclip
     pkgs.kanata
     pkgs.feh
-    pkgs.autorandr
     pkgs.rofi
     pkgs.firefox-bin
     pkgs.imagemagick
     pkgs.lazygit
+    pkgs.zellij
+    pkgs.zathura
+    pkgs.dmenu
 
     pkgs.lua5_1
     pkgs.lua51Packages.luarocks
@@ -66,6 +55,7 @@ in
     pkgs.libgcc
     pkgs.gnumake
     pkgs.texliveBasic
+    pkgs.cargo
 
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -105,6 +95,7 @@ in
     ".config/polybar".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/polybar";
     ".config/i3".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/i3";
     ".config/rofi".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/rofi";
+    ".config/zellij".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/.config/zellij";
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''
