@@ -56,7 +56,6 @@ return {
                 "goimports-reviser",
                 "gotests",
                 "shfmt",
-                "latexindent",
                 "clang-format",
             },
 

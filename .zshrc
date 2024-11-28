@@ -6,6 +6,7 @@ fi
 # Export
 
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_SESSION_TYPE="X11"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export NVM_DIR="$HOME/.nvm"
 export EDITOR="nvim"
