@@ -16,7 +16,7 @@ set $mod Mod4
 # Exec polybar at startup and after refreshing i3
 exec_always --no-startup-id killall -q polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-scale $HOME/.dotfiles/wallpaper/Cloudsnight.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/.dotfiles/wallpaper/Cloudsnight.jpg
 
 # Gap Size
 gaps inner 10
@@ -209,15 +209,22 @@ bindsym $mod+r mode "resize"
 # Start Picom Compositor for Effects
 exec --no-startup-id picom
 
-workspace 1 output HDMI-0
-workspace 2 output HDMI-0
-workspace 8 output eDP-1-1
+# First six workspaces are on the primary display
+workspace 1 output primary
+workspace 2 output primary
+workspace 3 output primary
+workspace 4 output primary
+workspace 5 output primary
+workspace 6 output primary
+
+# Last four workspaces are on the second display
+workspace 7 output nonprimary
+workspace 8 output nonprimary
+workspace 9 output nonprimary
+workspace 10 output nonprimary
 
 # Startup application and workspaces
 # exec --no-startup-id firefox
 # for_window [class="firefox"] move to workspace number $ws2
-
-exec --no-startup-id kitty
-for_window [class="kitty"] move to workspace number $ws1
-
-
+# exec --no-startup-id kitty
+# for_window [class="kitty"] move to workspace number $ws1

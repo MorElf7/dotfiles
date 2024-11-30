@@ -13,9 +13,6 @@ usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
-extern=HDMI-0
-intern=eDP-1-1
-
 # Merge in Defaults and Keymaps
 
 if [ -f $sysresources ]; then
@@ -34,11 +31,8 @@ if [ -f "$usermodmap" ]; then
     xmodmap "$usermodmap"
 fi
 
-if xrandr | grep "$extern disconnected"; then
-    xrandr --output "$extern" --off --output "$intern" --auto
-else
-    xrandr --output "$intern" --auto --output "$extern" --primary --right-of "$intern" --auto
-fi
+# Run scripts to set up multiple monitors
+sh $HOME/.local/scripts/i3_screens.sh
 
 # Start i3 Window Manager when starting X Server
 exec i3

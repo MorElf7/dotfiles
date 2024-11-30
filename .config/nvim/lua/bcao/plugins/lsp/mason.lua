@@ -57,6 +57,7 @@ return {
                 "gotests",
                 "shfmt",
                 "clang-format",
+                "prettierd",
             },
 
             -- if set to true this will check each tool for updates. If updates

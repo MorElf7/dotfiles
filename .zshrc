@@ -16,6 +16,7 @@ export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git --excl
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git --exclude .venv"
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
@@ -27,6 +28,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
+export CLIPBOARD_NOAUDIO=1
 
 # append completions to fpath
 fpath=(${ASDF_DIR}/completions $fpath)
@@ -38,10 +40,7 @@ compinit -C
 
 # Alias
 
-# Only on Acer Nitro 5. Update name if needed
-alias dual-monitor="xrandr --output HDMI-0 --primary --auto --output eDP-1-1 --auto --left-of HDMI-0"
 alias ip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
-
 alias ka="sudo $(which kanata) -c $HOME/.config/kanata/qwerty.kbd"
 alias v="fd -t f -H -E .git -E .venv -L | fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}' | xargs nvim"
 alias ls="eza -la"
@@ -84,7 +83,9 @@ eval "$(register-python-argcomplete pipx)"
 eval "$(starship init zsh)"
 
 # Run macchina
-macchina
+# macchina
+# Run fastfetch
+fastfetch
 
 source $HOME/.local/scripts/commands
 
