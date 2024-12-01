@@ -34,5 +34,8 @@ fi
 # Run scripts to set up multiple monitors
 sh $HOME/.local/scripts/i3_screens.sh
 
+# Starting notification service
+# exec dunst
+
 # Start i3 Window Manager when starting X Server
 exec i3

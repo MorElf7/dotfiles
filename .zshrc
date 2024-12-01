@@ -3,6 +3,10 @@ if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     exec startx
 fi
 
+# if uwsm check may-start && uwsm select; then
+# 	exec systemd-cat -t uwsm_start uwsm start default
+# fi
+
 # Export
 
 export XDG_CONFIG_HOME="$HOME/.config"
