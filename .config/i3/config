@@ -60,12 +60,12 @@ bindsym $mod+q kill
 bindsym $mod+d exec --no-startup-id dmenu_run
 
 # logout exit 3
-bindsym $mod+Delete exec --no-startup-id i3 exit
+# bindsym $mod+Delete exec --no-startup-id i3 exit
 
 # start rofi
 # bindsym $mod+d exec --no-startup-id rofi -show-icons -show drun -run-shell-command '{terminal} -e zsh -ic "{cmd} && read"'
-# bindsym $mod+d exec --no-startup-id sh $HOME/.config/rofi/bin/launcher
-# bindsym $mod+Shift+x exec --no-startup-id sh $HOME/.config/rofi/bin/runner
+bindsym $mod+d exec --no-startup-id sh $HOME/.config/rofi/bin/launcher
+bindsym $mod+Shift+x exec --no-startup-id sh $HOME/.config/rofi/bin/runner
 #
 
 # change focus
