@@ -59,6 +59,9 @@ bindsym $mod+q kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run
 
+# logout exit 3
+bindsym $mod+Delete exec --no-startup-id i3 exit
+
 # start rofi
 # bindsym $mod+d exec --no-startup-id rofi -show-icons -show drun -run-shell-command '{terminal} -e zsh -ic "{cmd} && read"'
 # bindsym $mod+d exec --no-startup-id sh $HOME/.config/rofi/bin/launcher
@@ -93,9 +96,9 @@ bindsym $mod+minus split v
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
+# bindsym $mod+s layout stacking
+# bindsym $mod+t layout tabbed
+# bindsym $mod+e layout toggle split
 
 # # toggle tiling / floating
 # bindsym $mod+Shift+space floating toggle
