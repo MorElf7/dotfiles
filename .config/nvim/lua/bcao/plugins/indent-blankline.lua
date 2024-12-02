@@ -5,7 +5,7 @@ return {
     config = function()
         vim.cmd("highlight IndentBlanklineContextChar guifg=#DCD7BA gui=nocombine")
         require("ibl").setup({
-            indent = { char = "│" },
+            indent = { char = "▏" },
             scope = {
                 highlight = "IndentBlanklineContextChar",
                 show_start = true,
