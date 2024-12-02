@@ -108,6 +108,7 @@ button:hover {
     background-color: @base;
     border-radius: 9px;
     padding: 5px;
+    margin: 2px;
 }
 
 
@@ -126,14 +127,14 @@ button:hover {
 }
 
 #clock {
-    background-color: @maroon;
+    background-color: @sky;
     color: @crust;
     border-radius: 9px;
     margin: 5px;
 }
 
 #battery {
-    background-color: @pink;
+    background-color: @peach;
     color: @crust;
     border-radius: 9px;
     margin: 5px;
@@ -141,7 +142,7 @@ button:hover {
 
 #battery.charging,
 #battery.plugged {
-    background-color: @pink;
+    background-color: @peach;
     color: @crust;
     margin: 5px;
     border-radius: 9px;
