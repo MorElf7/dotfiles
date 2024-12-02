@@ -97,7 +97,7 @@
     "on-click": "pavucontrol",
   },
   "custom/spotify": {
-    "format": "{0} {1}",
+    "format": "{0}",
     "escape": true,
     "return-type": "json",
     "max-length": 40,

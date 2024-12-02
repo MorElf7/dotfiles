@@ -1,30 +1,29 @@
 return {
     {
-        -- "folke/tokyonight.nvim",
-        -- "rebelot/kanagawa.nvim",
-
-        "catppuccin/nvim",
-        name = "catppuccin",
+        "rebelot/kanagawa.nvim",
+        -- "catppuccin/nvim",
+        -- name = "catppuccin",
 
         priority = 1000, -- make sure to load this before all the other start plugins
-        options = {
-            transparent = true,
-        },
         config = function()
             -- load the colorscheme here
 
-            require("catppuccin").setup({
-                transparent_background = true,
-                integrations = {
-                    mini = {
-                        enabled = true,
-                        indentscope_color = "overlay0",
-                    },
-                },
+            -- require("catppuccin").setup({
+            --     transparent_background = true,
+            --     integrations = {
+            --         mini = {
+            --             enabled = true,
+            --             indentscope_color = "overlay0",
+            --         },
+            --     },
+            -- })
+            -- vim.cmd("colorscheme catppuccin-mocha")
+            --
+            require("kanagawa").setup({
+                theme = "wave",
+                transparent = true,
             })
-            vim.cmd("colorscheme catppuccin-mocha")
-            -- vim.cmd("colorscheme tokyonight-storm")
-            -- vim.cmd("colorscheme kanagawa-wave")
+            vim.cmd("colorscheme kanagawa-wave")
         end,
     },
 }
