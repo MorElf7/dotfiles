@@ -229,8 +229,8 @@ label:focus {
 }
 
 #pulseaudio.muted {
-    background-color: @base;
-    color: @text;
+    background-color: @rosewater;
+    color: @crust;
     margin: 5px;
     border-radius: 9px;
 }
@@ -242,6 +242,14 @@ label:focus {
 
 #wireplumber.muted {
     background-color: #f53c3c;
+}
+
+#custom-spotify {
+    background-color: @lavender;
+    color: @crust;
+    margin: 5px;
+    padding: 8px;
+    border-radius: 9px;
 }
 
 #custom-media {

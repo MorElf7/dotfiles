@@ -3,14 +3,10 @@ if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
     exec startx
 fi
 
-# if uwsm check may-start && uwsm select; then
-# 	exec systemd-cat -t uwsm_start uwsm start default
-# fi
-
 # Export
 
 export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_SESSION_TYPE="X11"
+# export XDG_SESSION_TYPE="X11"
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export NVM_DIR="$HOME/.nvm"
 export EDITOR="nvim"

@@ -8,6 +8,15 @@ return {
         "stevearc/aerial.nvim",
     },
     config = function()
+        require("aerial").setup({
+            -- optionally use on_attach to set keymaps when aerial has attached to a buffer
+            -- on_attach = function(bufnr)
+            --     -- Jump forwards/backwards with '{' and '}'
+            --     vim.keymap.set("n", "{", "<cmd>AerialPrev<CR>", { buffer = bufnr })
+            --     vim.keymap.set("n", "}", "<cmd>AerialNext<CR>", { buffer = bufnr })
+            -- end,
+        })
+
         local telescope = require("telescope")
         local actions = require("telescope.actions")
         local telescopeConfig = require("telescope.config")
@@ -50,7 +59,7 @@ return {
 
         keymap.set("n", "<leader>ff", "<cmd>lua project_files()<cr>", { desc = "Fuzzy find git files in cwd" })
         keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
-        keymap.set("n", "<leader>fa", "<cmd>Telescope aerial<cr>", { desc = "Go to symbol (Aerial)" })
+        keymap.set("n", "<leader>fo", "<cmd>Telescope aerial<cr>", { desc = "Go to symbol (Aerial)" })
     end,
     init = function()
         local utils = require("telescope.utils")
