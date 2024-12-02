@@ -7,9 +7,10 @@
 }
 
 window#waybar {
-    background-color: @base;
+    background-color: transparent;
     color: @text;
     border-bottom: transparent;
+    border-radius: 9px;
 }
 
 window#waybar.hidden {
@@ -51,7 +52,9 @@ button:hover {
 
 #workspaces button {
     padding: 0 2px;
-    background-color: transparent;
+    background-color: @base;
+    border-radius: 9px;
+    margin: 5px;
     color: @text;
 }
 
@@ -101,7 +104,13 @@ button:hover {
     color: #ffffff;
 }
 
-#window,
+#window {
+    background-color: @base;
+    border-radius: 9px;
+    padding: 5px;
+}
+
+
 #workspaces {
     margin: 0 2px;
 }
@@ -119,17 +128,23 @@ button:hover {
 #clock {
     background-color: @maroon;
     color: @crust;
+    border-radius: 9px;
+    margin: 5px;
 }
 
 #battery {
     background-color: @pink;
     color: @crust;
+    border-radius: 9px;
+    margin: 5px;
 }
 
 #battery.charging,
 #battery.plugged {
     background-color: @pink;
     color: @crust;
+    margin: 5px;
+    border-radius: 9px;
 }
 
 @keyframes blink {
@@ -148,6 +163,7 @@ button:hover {
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
+    border-radius: 9px;
 }
 
 #power-profiles-daemon {
@@ -193,20 +209,29 @@ label:focus {
 #network {
     background-color: @flamingo;
     color: @crust;
+    border-radius: 9px;
+    margin: 5px;
 }
 
 #network.disconnected {
-    background-color: #f53c3c;
+    background-color: @flamingo;
+    color: @crust;
+    border-radius: 9px;
+    margin: 5px;
 }
 
 #pulseaudio {
     background-color: @rosewater;
     color: @crust;
+    margin: 5px;
+    border-radius: 9px;
 }
 
 #pulseaudio.muted {
     background-color: @base;
     color: @text;
+    margin: 5px;
+    border-radius: 9px;
 }
 
 #wireplumber {
