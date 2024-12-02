@@ -442,19 +442,19 @@
     format = "<span size="250%">%s</span>\n%b"
 
 [urgency_critical]
-    background = "#1e1e2e"
+    background = "#181825"
     foreground = "#cdd6f4"
     frame_color = "#181825"
     timeout = 0
 
 [urgency_low]
-    background = "#1e1e2e"
+    background = "#181825"
     foreground = "#cdd6f4"
     frame_color = "#181825"
     timeout = 5
 
 [urgency_normal]
-    background = "#1e1e2e"
+    background = "#181825"
     foreground = "#cdd6f4"
     frame_color = "#181825"
     timeout = 5
