@@ -3,7 +3,7 @@
 
 palette = "catppuccin_mocha"
 add_newline = false
-command_timeout = 1000
+command_timeout = 5000
 format = """  
 $os\
 $username\

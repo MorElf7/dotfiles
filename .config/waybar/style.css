@@ -54,7 +54,7 @@ button:hover {
     padding: 0 2px;
     background-color: @base;
     border-radius: 9px;
-    margin: 5px;
+    margin: 8 2px;
     color: @text;
 }
 
@@ -107,8 +107,8 @@ button:hover {
 #window {
     background-color: @base;
     border-radius: 9px;
-    padding: 5px;
-    margin: 2px;
+    padding: 0 5px;
+    margin: 7 2px;
 }
 
 
@@ -130,21 +130,24 @@ button:hover {
     background-color: @sky;
     color: @crust;
     border-radius: 9px;
-    margin: 5px;
+    margin: 7 0px;
+    padding: 0 7px;
 }
 
 #battery {
     background-color: @peach;
     color: @crust;
     border-radius: 9px;
-    margin: 5px;
+    margin: 7 0px;
+    padding: 0 7px;
 }
 
 #battery.charging,
 #battery.plugged {
     background-color: @peach;
     color: @crust;
-    margin: 5px;
+    margin: 7 0px;
+    padding: 0 7px;
     border-radius: 9px;
 }
 
@@ -211,27 +214,31 @@ label:focus {
     background-color: @flamingo;
     color: @crust;
     border-radius: 9px;
-    margin: 5px;
+    margin: 7 0px;
+    padding: 0 7px;
 }
 
 #network.disconnected {
     background-color: @flamingo;
     color: @crust;
     border-radius: 9px;
-    margin: 5px;
+    margin: 7 0px;
+    padding: 0 7px;
 }
 
 #pulseaudio {
     background-color: @rosewater;
     color: @crust;
-    margin: 5px;
+    margin: 7 0px;
+    padding: 0 7px;
     border-radius: 9px;
 }
 
 #pulseaudio.muted {
     background-color: @rosewater;
     color: @crust;
-    margin: 5px;
+    margin: 7 0px;
+    padding: 0 7px;
     border-radius: 9px;
 }
 
@@ -247,8 +254,8 @@ label:focus {
 #custom-spotify {
     background-color: @lavender;
     color: @crust;
-    margin: 5px;
-    padding: 8px;
+    margin: 7 0px;
+    padding: 0 7px;
     border-radius: 9px;
 }
 
