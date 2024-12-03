@@ -31,9 +31,9 @@ config.font = wezterm.font_with_fallback({
 		weight = "Regular",
 		harfbuzz_features = { "calt", "zero", "cv14", "cv01", "cv02", "ss05", "ss04", "cv18", "ss03", "cv15" },
 	},
-	{ family = "SF Pro", weight = "Regular" },
+	-- { family = "SF Pro", weight = "Regular" },
 })
-config.font_size = 13
+config.font_size = 10
 config.front_end = "WebGpu"
 config.freetype_load_target = "Normal"
 config.freetype_load_flags = "NO_HINTING"
@@ -46,7 +46,7 @@ config.enable_scroll_bar = false
 config.window_padding = {
 	left = 0,
 	right = 0,
-	top = 0,
+	top = 8,
 	bottom = 0,
 }
 config.enable_tab_bar = false
@@ -56,13 +56,12 @@ config.window_decorations = "RESIZE"
 config.audible_bell = "Disabled"
 
 -- Misc
-config.term = "wezterm"
+config.term = "xterm-256color"
 config.automatically_reload_config = true
 config.debug_key_events = true
 config.enable_kitty_graphics = true
 config.enable_kitty_keyboard = true
 config.max_fps = 120
-config.native_macos_fullscreen_mode = true
 
 -- Keybinds
 config.disable_default_key_bindings = true

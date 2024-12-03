@@ -1,15 +1,21 @@
 return {
     {
-        -- "folke/tokyonight.nvim",
-        -- "rebelot/kanagawa.nvim",
-
+        "rebelot/kanagawa.nvim",
+        enabled = false,
+        priority = 1000, -- make sure to load this before all the other start plugins
+        config = function()
+            require("kanagawa").setup({
+                theme = "wave",
+                transparent = true,
+            })
+            vim.cmd("colorscheme kanagawa-wave")
+        end,
+    },
+    {
         "catppuccin/nvim",
         name = "catppuccin",
-
+        enabled = true,
         priority = 1000, -- make sure to load this before all the other start plugins
-        options = {
-            transparent = true,
-        },
         config = function()
             -- load the colorscheme here
 
@@ -23,8 +29,6 @@ return {
                 },
             })
             vim.cmd("colorscheme catppuccin-mocha")
-            -- vim.cmd("colorscheme tokyonight-storm")
-            -- vim.cmd("colorscheme kanagawa-wave")
         end,
     },
 }

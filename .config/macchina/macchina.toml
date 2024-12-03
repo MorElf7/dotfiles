@@ -13,6 +13,6 @@ show = [
   "Uptime", 
   "Processor",
   # "ProcessorLoad", 
-  # "Memory"
-  # "GPU",
+  "Memory",
+  "GPU",
 ]

@@ -1,8 +1,9 @@
-# Get editor completions based on the config schema
+# Get editor completions based on the config schemastar
 "$schema" = 'https://starship.rs/config-schema.json'
 
 palette = "catppuccin_mocha"
 add_newline = false
+command_timeout = 5000
 format = """  
 $os\
 $username\

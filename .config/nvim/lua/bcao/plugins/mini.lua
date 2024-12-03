@@ -1,11 +1,13 @@
 return {
     {
         "echasnovski/mini.indentscope",
+        enabled = false,
         version = false,
         events = { "BufRead", "BufNewFile" },
         opts = {
             draw = {
                 delay = 100,
+                fg = "#dcd7ba",
             },
             symbol = "│",
             options = { try_as_border = true },

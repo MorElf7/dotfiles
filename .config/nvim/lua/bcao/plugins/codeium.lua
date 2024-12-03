@@ -1,6 +1,7 @@
 return {
     "Exafunction/codeium.nvim",
     build = ":Codeium Auth",
+    events = { "BufRead", "BufNewFile" },
     dependencies = {
         "nvim-lua/plenary.nvim",
         "hrsh7th/nvim-cmp",
