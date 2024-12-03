@@ -41,7 +41,7 @@ if type brew &>/dev/null; then
 fi
 
 # Alias
-# alias ip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
+alias ip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 alias ka="sudo kanata_macos_arm64 -c  $HOME/.config/kanata/kanata.kdb"
 alias vim="nvim"
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
@@ -93,8 +93,8 @@ _fzf_compgen_dir() {
 #   tmux-personal
 # fi
 
-# Run macchina
-macchina
+# Run fastfetch
+fastfetch
 
 # Source runtime
 source $HOME/.local/scripts/commands.sh
