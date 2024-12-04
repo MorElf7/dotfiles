@@ -13,6 +13,143 @@ window#waybar {
     border-radius: 9px;
 }
 
+/* #clock, */
+/* #battery, */
+/* #cpu, */
+/* #memory, */
+/* #disk, */
+/* #temperature, */
+/* #backlight, */
+/* #network, */
+/* #pulseaudio, */
+/* #wireplumber, */
+/* #custom-media, */
+/* #tray, */
+/* #mode, */
+/* #idle_inhibitor, */
+/* #scratchpad, */
+/* #power-profiles-daemon, */
+/* #mpd { */
+/*     padding: 0 10px; */
+/*     color: #ffffff; */
+/* } */
+
+#window {
+    background-color: @base;
+    opacity: 0.8;
+    border-radius: 9px;
+    padding: 0 5px;
+    margin: 7 2px;
+}
+
+
+#workspaces {
+    margin: 0 2px;
+}
+
+#clock {
+    background-color: @surface0;
+    color: @text;
+    opacity: 0.8;
+    border-radius: 9px;
+    margin: 7 0px;
+    padding: 0 7px;
+}
+
+#battery {
+    background-color: @surface0;
+    color: @text;
+    opacity: 0.8;
+    border-radius: 9px;
+    margin: 7 0px;
+    padding: 0 7px;
+}
+
+#battery.charging,
+#battery.plugged {
+    background-color: @surface0;
+    color: @text;
+    opacity: 0.8;
+    margin: 7 0px;
+    padding: 0 7px;
+    border-radius: 9px;
+}
+
+/* Using steps() instead of linear as a timing function to limit cpu usage */
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    border-radius: 9px;
+}
+
+#cpu {
+    background-color: @surface0;
+    color: @text;
+    opacity: 0.8;
+    border-radius: 9px;
+    margin: 7 0px;
+    padding: 0 7px;
+}
+
+#memory {
+    background-color: @surface0;
+    color: @text;
+    opacity: 0.8;
+    border-radius: 9px;
+    margin: 7 0px;
+    padding: 0 7px;
+}
+
+#network {
+    background-color: @surface0;
+    color: @text;
+    opacity: 0.8;
+    border-radius: 9px;
+    margin: 7 0px;
+    padding: 0 7px;
+}
+
+#network.disconnected {
+    background-color: @surface0;
+    color: @text;
+    opacity: 0.8;
+    border-radius: 9px;
+    margin: 7 0px;
+    padding: 0 7px;
+}
+
+#pulseaudio {
+    background-color: @surface0;
+    color: @text;
+    opacity: 0.8;
+    margin: 7 0px;
+    padding: 0 7px;
+    border-radius: 9px;
+}
+
+#pulseaudio.muted {
+    background-color: @surface0;
+    color: @text;
+    opacity: 0.8;
+    margin: 7 0px;
+    padding: 0 7px;
+    border-radius: 9px;
+}
+
+#custom-spotify {
+    background-color: @blue;
+    color: @base;
+    opacity: 0.8;
+    margin: 7 0px;
+    padding: 0 7px;
+    border-radius: 9px;
+}
+
 window#waybar.hidden {
     /* opacity: 0.2; */
 }
@@ -55,6 +192,7 @@ button:hover {
     background-color: @base;
     border-radius: 9px;
     margin: 8 2px;
+    opacity: 0.8;
     color: @text;
 }
 
@@ -83,38 +221,6 @@ button:hover {
     box-shadow: inset 0 -3px #ffffff;
 }
 
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#tray,
-#mode,
-#idle_inhibitor,
-#scratchpad,
-#power-profiles-daemon,
-#mpd {
-    padding: 0 10px;
-    color: #ffffff;
-}
-
-#window {
-    background-color: @base;
-    border-radius: 9px;
-    padding: 0 5px;
-    margin: 7 2px;
-}
-
-
-#workspaces {
-    margin: 0 2px;
-}
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left>widget:first-child>#workspaces {
@@ -126,48 +232,11 @@ button:hover {
     margin-right: 0;
 }
 
-#clock {
-    background-color: @sky;
-    color: @crust;
-    border-radius: 9px;
-    margin: 7 0px;
-    padding: 0 7px;
-}
-
-#battery {
-    background-color: @peach;
-    color: @crust;
-    border-radius: 9px;
-    margin: 7 0px;
-    padding: 0 7px;
-}
-
-#battery.charging,
-#battery.plugged {
-    background-color: @peach;
-    color: @crust;
-    margin: 7 0px;
-    padding: 0 7px;
-    border-radius: 9px;
-}
-
 @keyframes blink {
     to {
         background-color: #ffffff;
         color: #000000;
     }
-}
-
-/* Using steps() instead of linear as a timing function to limit cpu usage */
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-    border-radius: 9px;
 }
 
 #power-profiles-daemon {
@@ -193,53 +262,12 @@ label:focus {
     background-color: #000000;
 }
 
-#cpu {
-    background-color: #2ecc71;
-    color: #000000;
-}
-
-#memory {
-    background-color: #9b59b6;
-}
-
 #disk {
     background-color: #964B00;
 }
 
 #backlight {
     background-color: #90b1b1;
-}
-
-#network {
-    background-color: @flamingo;
-    color: @crust;
-    border-radius: 9px;
-    margin: 7 0px;
-    padding: 0 7px;
-}
-
-#network.disconnected {
-    background-color: @flamingo;
-    color: @crust;
-    border-radius: 9px;
-    margin: 7 0px;
-    padding: 0 7px;
-}
-
-#pulseaudio {
-    background-color: @rosewater;
-    color: @crust;
-    margin: 7 0px;
-    padding: 0 7px;
-    border-radius: 9px;
-}
-
-#pulseaudio.muted {
-    background-color: @rosewater;
-    color: @crust;
-    margin: 7 0px;
-    padding: 0 7px;
-    border-radius: 9px;
 }
 
 #wireplumber {
@@ -249,14 +277,6 @@ label:focus {
 
 #wireplumber.muted {
     background-color: #f53c3c;
-}
-
-#custom-spotify {
-    background-color: @lavender;
-    color: @crust;
-    margin: 7 0px;
-    padding: 0 7px;
-    border-radius: 9px;
 }
 
 #custom-media {
