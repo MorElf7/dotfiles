@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 sketchybar --add event aerospace_workspace_change
 #echo $(aerospace list-workspaces --monitor 1 --visible no --empty no) >> ~/aaaa
@@ -56,12 +56,15 @@ sketchybar --add event aerospace_workspace_change
 #            --set space_creator "${space_creator[@]}"   \
 #            --subscribe space_creator aerospace_workspace_change
 
-
 space=(
-  script="$PLUGIN_DIR/aerospace.sh"
-  label.font.size=15
+    script="$PLUGIN_DIR/aerospace.sh"
+    label.font.size=15
+    color=$WHITE
+    background.color=$BG2
+    label.padding_right=10
+    label.y_offset=2
 )
 
 sketchybar --add item aerospace left \
-           --set aerospace "${space[@]}" \
-           --subscribe aerospace aerospace_workspace_change
+    --set aerospace "${space[@]}" \
+    --subscribe aerospace aerospace_workspace_change
