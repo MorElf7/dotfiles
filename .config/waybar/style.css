@@ -150,25 +150,31 @@ window#waybar {
     border-radius: 9px;
 }
 
+#custom-spotify.empty {
+    background-color: transparent;
+    color: transparent;
+}
+
 window#waybar.hidden {
     /* opacity: 0.2; */
 }
 
-/*
-window#waybar.empty {
+
+window#waybar.empty #window {
     background-color: transparent;
 }
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
+
+/* window#waybar.solo { */
+/*     background-color: transparent; */
+/* } */
+
 
 window#waybar.termite {
-    background-color: #3F3F3F;
+    background-color: transparent;
 }
 
 window#waybar.chromium {
-    background-color: #000000;
+    background-color: transparent;
     border: none;
 }
 
