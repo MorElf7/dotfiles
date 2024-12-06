@@ -11,7 +11,7 @@ config.color_scheme = "Catppuccin Mocha"
 config.window_padding = {
 	left = 0,
 	right = 0,
-	top = 7,
+	top = 10,
 	bottom = 0,
 }
 config.enable_tab_bar = true
