@@ -88,6 +88,7 @@ eval "$(starship init zsh)"
 fastfetch
 
 source $HOME/.local/scripts/commands
+source /opt/asdf-vm/asdf.sh
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

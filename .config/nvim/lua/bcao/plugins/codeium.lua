@@ -1,4 +1,5 @@
 return {
+    enabled = false,
     "Exafunction/codeium.nvim",
     build = ":Codeium Auth",
     events = { "BufRead", "BufNewFile" },

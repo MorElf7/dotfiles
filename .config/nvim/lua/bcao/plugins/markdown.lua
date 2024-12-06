@@ -4,7 +4,7 @@ return {
         ft = "markdown",
         config = function()
             require("image").setup({
-                backend = "kitty",
+                backend = "ueberzug",
                 processor = "magick_cli",
                 integrations = {
                     markdown = {
