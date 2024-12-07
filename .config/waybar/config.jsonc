@@ -30,6 +30,7 @@
   },
   "hyprland/window": {
     "separate-outputs": true,
+    "format": "{initialTitle}",
   },
   "hyprland/mode": {
     "format": "<span style=\"italic\">{}</span>",

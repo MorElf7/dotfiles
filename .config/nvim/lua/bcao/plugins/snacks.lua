@@ -5,14 +5,82 @@ return {
     ---@type snacks.Config
     opts = {
         bigfile = { enabled = true },
-        dashboard = { enabled = true },
+        dashboard = {
+            enabled = true,
+            preset = {
+                keys = {
+                    { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+                    { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+                    {
+                        icon = " ",
+                        key = "g",
+                        desc = "Find Text",
+                        action = ":lua Snacks.dashboard.pick('live_grep')",
+                    },
+                    {
+                        icon = " ",
+                        key = "r",
+                        desc = "Recent Files",
+                        action = ":lua Snacks.dashboard.pick('oldfiles')",
+                    },
+                    {
+                        icon = " ",
+                        key = "s",
+                        desc = "Dotfiles Config",
+                        action = ":e $MYVIMRC | cd $HOME/.dotfiles",
+                    },
+                    {
+                        icon = " ",
+                        key = "c",
+                        desc = "Codes",
+                        action = ":e $HOME/codes.md",
+                    },
+                    {
+                        icon = "󰒲 ",
+                        key = "l",
+                        desc = "Lazy",
+                        action = ":Lazy",
+                        enabled = package.loaded.lazy ~= nil,
+                    },
+                    { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+                },
+            },
+            sections = {
+                { section = "header" },
+                {
+                    pane = 2,
+                    section = "terminal",
+                    cmd = "colorscript -e jangofett",
+                    height = 5,
+                    padding = 1,
+                },
+                { section = "keys", gap = 1, padding = 1 },
+                { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+                { pane = 2, icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+                {
+                    pane = 2,
+                    icon = " ",
+                    title = "Git Status",
+                    section = "terminal",
+                    enabled = function()
+                        return Snacks.git.get_root() ~= nil
+                    end,
+                    cmd = "hub status --short --branch --renames",
+                    height = 5,
+                    padding = 1,
+                    ttl = 5 * 60,
+                    indent = 3,
+                },
+                { section = "startup" },
+            },
+        },
         notifier = {
             enabled = true,
             timeout = 3000,
         },
         quickfile = { enabled = true },
         statuscolumn = { enabled = true },
-        -- words = { enabled = true },
+        words = { enabled = false },
         styles = {
             notification = {
                 wo = { wrap = true }, -- Wrap notifications

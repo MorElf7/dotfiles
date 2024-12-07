@@ -74,10 +74,11 @@ _fzf_compgen_dir() {
 }
 
 # Source runtime
-eval $(thefuck --alias)
+eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
 eval "$(register-python-argcomplete pipx)"
+eval "$(hub alias -s)"
 
 # Config starship prompt
 eval "$(starship init zsh)"

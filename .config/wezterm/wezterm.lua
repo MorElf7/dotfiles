@@ -123,7 +123,7 @@ config.font = wezterm.font_with_fallback({
 	-- { family = "SF Pro", weight = "Regular" },
 })
 config.font_size = 10
-config.front_end = "WebGpu"
+config.front_end = "OpenGL"
 config.freetype_load_target = "Normal"
 config.freetype_load_flags = "NO_HINTING"
 
