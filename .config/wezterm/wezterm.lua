@@ -108,7 +108,7 @@ config.font = wezterm.font_with_fallback({
 	{
 		family = "MonaspiceNe Nerd Font Mono",
 		weight = "Regular",
-		harfbuzz_features = { "calt", "liga", "ss03", "ss07", "ss09" },
+		harfbuzz_features = { "calt", "liga", "ss02", "ss03", "ss07", "ss09" },
 	},
 	-- {
 	-- 	family = "JetBrainsMono Nerd Font",
