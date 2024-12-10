@@ -138,7 +138,7 @@ config.enable_wayland = true
 config.automatically_reload_config = true
 config.debug_key_events = true
 config.enable_kitty_graphics = true
--- config.enable_kitty_keyboard = true
+config.enable_kitty_keyboard = true
 config.max_fps = 120
 config.default_workspace = "personal"
 
