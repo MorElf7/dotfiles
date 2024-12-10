@@ -4,7 +4,7 @@ return {
         ft = "markdown",
         config = function()
             require("image").setup({
-                backend = "ueberzug",
+                backend = "kitty", -- uberzug as alternative for non kitty terminal
                 processor = "magick_cli",
                 integrations = {
                     markdown = {
@@ -23,10 +23,10 @@ return {
                         filetypes = { "typst" },
                     },
                     html = {
-                        enabled = false,
+                        enabled = true,
                     },
                     css = {
-                        enabled = false,
+                        enabled = true,
                     },
                 },
                 max_width = nil,
