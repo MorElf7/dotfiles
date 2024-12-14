@@ -2,12 +2,20 @@
   "layer": "top", // Waybar at top layer
   // "width": 1280, // Waybar width
   "spacing": 4, // Gaps between modules (4px)
+  "height": 24,
   "position": "top",
   "mod": "dock",
   "reload_style_on_change": true,
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-center": ["custom/spotify"],
-  "modules-right": ["pulseaudio", "network", "battery", "clock"],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "battery",
+    "pulseaudio",
+    "network",
+    "clock",
+  ],
   // Modules configuration
   "hyprland/workspaces": {
     "disable-scroll": true,
@@ -22,6 +30,7 @@
   },
   "hyprland/window": {
     "separate-outputs": true,
+    "format": "{initialTitle}",
   },
   "hyprland/mode": {
     "format": "<span style=\"italic\">{}</span>",
@@ -33,8 +42,14 @@
     "tooltip": true,
     "tooltip-format": "{app}: {title}",
   },
+  "cpu": {
+    "format": " {usage}%",
+  },
+  "memory": {
+    "format": " {percentage}%",
+  },
   "clock": {
-    "format": "{:%a %d %b %I:%M %p}",
+    "format": "󰸗 {:%a %d %b %I:%M %p}",
     "rotate": 0,
     "format-alt": "{:%R 󰃭 %d·%m·%y}",
     "tooltip-format": "<span>{calendar}</span>",

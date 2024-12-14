@@ -1,4 +1,5 @@
 return {
+    -- enabled = false,
     "NeogitOrg/neogit",
     dependencies = {
         "nvim-lua/plenary.nvim", -- required
@@ -6,12 +7,12 @@ return {
         "nvim-telescope/telescope.nvim", -- optional
     },
     keys = {
-        {
-            "<leader>gg",
-            ":Neogit<Return>",
-            silent = true,
-            noremap = true,
-        },
+        -- {
+        --     "<leader>gg",
+        --     ":Neogit<Return>",
+        --     silent = true,
+        --     noremap = true,
+        -- },
         {
             "<leader>gd",
             ":DiffviewOpen<Return>",

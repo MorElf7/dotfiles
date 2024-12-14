@@ -31,6 +31,7 @@ export PKG_CONFIG_PATH="$BREW_PREFIX/opt/curl/lib/pkgconfig"
 # append completions to fpath
 if type brew &>/dev/null; then
   FPATH=$BREW_PREFIX/share/zsh-completions:$FPATH
+  FPATH=$BREW_PREFIX/share/zsh/site-functions:$FPATH
   fpath=(${ASDF_DIR}/completions $fpath)
   
   autoload -Uz compinit
@@ -102,6 +103,7 @@ source $HOME/.local/scripts/commands.sh
 eval $(thefuck --alias)
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"
+eval "$(hub alias -s)"
 
 # Config starship prompt
 eval "$(starship init zsh)"

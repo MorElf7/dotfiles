@@ -1,4 +1,5 @@
 return {
+    enabled = false,
     "mhinz/vim-startify",
     config = function()
         vim.g.startify_custom_header = {
