@@ -444,18 +444,18 @@
 [urgency_critical]
     background = "#181825"
     foreground = "#cdd6f4"
-    frame_color = "#cdd6f4"
+    frame_color = "#cba6f7"
     timeout = 0
 
 [urgency_low]
     background = "#181825"
     foreground = "#cdd6f4"
-    frame_color = "#cdd6f4"
+    frame_color = "#cba6f7"
     timeout = 5
 
 [urgency_normal]
     background = "#181825"
     foreground = "#cdd6f4"
-    frame_color = "#cdd6f4"
+    frame_color = "#cba6f7"
     timeout = 5
 
