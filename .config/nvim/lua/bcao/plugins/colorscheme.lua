@@ -26,6 +26,7 @@ return {
                         enabled = true,
                         indentscope_color = "overlay0",
                     },
+                    snacks = true,
                 },
             })
             vim.cmd("colorscheme catppuccin-mocha")
