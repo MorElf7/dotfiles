@@ -14,11 +14,11 @@ config.window_padding = {
 	top = 10,
 	bottom = 0,
 }
-config.enable_tab_bar = true
+config.enable_tab_bar = false
 config.use_fancy_tab_bar = false
 -- config.window_background_opacity = 0.9
 -- config.macos_window_background_blur = 10
-config.window_decorations = "NONE"
+config.window_decorations = "RESIZE"
 
 config.colors = {
 	tab_bar = {
@@ -122,7 +122,7 @@ config.font = wezterm.font_with_fallback({
 	},
 	-- { family = "SF Pro", weight = "Regular" },
 })
-config.font_size = 10
+config.font_size = 11
 config.front_end = "OpenGL"
 config.freetype_load_target = "Normal"
 config.freetype_load_flags = "NO_HINTING"
