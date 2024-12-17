@@ -1,7 +1,7 @@
 return {
     {
         "echasnovski/mini.indentscope",
-        enabled = false,
+        enabled = true,
         version = false,
         events = { "BufRead", "BufNewFile" },
         opts = {
@@ -23,6 +23,8 @@ return {
                     "mason",
                     "notify",
                     "oil",
+                    "dashboard",
+                    "snacks",
                 },
                 callback = function()
                     vim.b.miniindentscope_disable = true

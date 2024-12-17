@@ -7,7 +7,7 @@ battery=(
     update_freq=120
     color=$WHITE
     background.color=$BG2
-    label.padding_right=10
+    label.padding_right=5
     label.y_offset=0
     updates=on
 )
