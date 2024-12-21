@@ -1,5 +1,6 @@
 #!/bin/bash
 
-song_info=$(playerctl metadata --format '󰎈 {{artist}} - {{title}} 󰎈')
+# Only Spotify
+song_info=$(playerctl metadata -p spotify --format '󰎈 {{artist}} - {{title}} 󰎈')
 
 echo "$song_info"
