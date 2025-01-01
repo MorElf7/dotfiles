@@ -1,13 +1,14 @@
 # Font
 font-family = MonaspiceNe Nerd Font Mono
-font-size = 12
+font-size = 13
 
 # Appearance 
 window-decoration = true
-macos-titlebar-style = hidden
+macos-titlebar-style = transparent
 
 # Misc
 macos-option-as-alt = true
+title = " "
 
 #Color
 theme = Kanagawa Wave
