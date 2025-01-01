@@ -1,6 +1,6 @@
 # Font
 font-family = MonaspiceNe Nerd Font Mono
-font-size = 13
+font-size = 12
 
 # Appearance 
 window-decoration = true
@@ -11,8 +11,8 @@ macos-option-as-alt = true
 title = " "
 
 #Color
-theme = Kanagawa Wave
-# theme = catppuccin-mocha
+# theme = Kanagawa Wave
+theme = catppuccin-mocha
 
 # Keybinds 
 keybind = ctrl+shift+r=reload_config

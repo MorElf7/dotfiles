@@ -1,7 +1,7 @@
 return {
     {
         "rebelot/kanagawa.nvim",
-        enabled = true,
+        enabled = false,
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             require("kanagawa").setup({
@@ -14,7 +14,7 @@ return {
     {
         "catppuccin/nvim",
         name = "catppuccin",
-        enabled = false,
+        enabled = true,
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             -- load the colorscheme here
