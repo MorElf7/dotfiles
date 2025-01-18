@@ -46,7 +46,7 @@ alias ip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0
 alias ka="sudo kanata_macos_arm64 -c  $HOME/.config/kanata/kanata.kdb"
 alias vim="nvim"
 alias get_idf=". $HOME/esp/esp-idf/export.sh"
-alias v="fd -t f -H -E .git -E .venv -L | fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}' | xargs nvim"
+alias v='fd -t f -H -E .git -E .venv -L | fzf --preview "bat --style numbers,changes --color=always --line-range=:500 {}" | xargs -I {} nvim "{}"'
 alias ls="eza -la"
 alias sed="gsed"
 alias grep='grep --color=auto'
