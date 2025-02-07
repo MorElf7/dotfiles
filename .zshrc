@@ -31,7 +31,8 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 export CLIPBOARD_NOAUDIO=1
 
 # append completions to fpath
-fpath=(${ASDF_DIR}/completions $fpath)
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 autoload -Uz compinit
 if [ "$(find ~/.zcompdump -mtime 1)" ] ; then
     compinit
@@ -89,7 +90,6 @@ eval "$(starship init zsh)"
 fastfetch
 
 source $HOME/.local/scripts/commands
-source /opt/asdf-vm/asdf.sh
 
 source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
