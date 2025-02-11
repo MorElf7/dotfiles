@@ -14,4 +14,4 @@ asdf global golang latest
 asdf plugin add lua
 asdf install lua latest:5.1
 asdf install lua latest:5.4
-asdf global golang latest
+asdf global lua latest:5.1
