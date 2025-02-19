@@ -9,7 +9,6 @@ return {
             preset = {
                 keys = {
                     { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
-                    { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
                     {
                         icon = " ",
                         key = "g",
@@ -27,6 +26,12 @@ return {
                         key = "s",
                         desc = "Dotfiles Config",
                         action = ":e $MYVIMRC | cd $HOME/.dotfiles",
+                    },
+                    {
+                        icon = " ",
+                        key = "n",
+                        desc = "Notes",
+                        action = ":e $HOME/Documents/projects/obsidian-vault/index.md",
                     },
                     {
                         icon = " ",
