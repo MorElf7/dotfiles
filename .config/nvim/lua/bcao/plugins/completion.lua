@@ -24,6 +24,13 @@ return {
                 use_nvim_cmp_as_default = true,
                 nerd_font_variant = "mono",
             },
+            cmdline = {
+                keymap = {
+                    -- recommended, as the default keymap will only show and select the next item
+                    ["<Tab>"] = { "show", "accept" },
+                },
+                completion = { ghost_text = { enabled = false }, menu = { auto_show = true } },
+            },
             -- snippets = { preset = "luasnip" },
             sources = {
                 default = { "lsp", "path", "snippets", "buffer" },

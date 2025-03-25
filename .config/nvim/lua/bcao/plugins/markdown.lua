@@ -47,14 +47,14 @@ return {
         build = ":call mkdp#util#install()",
         config = function()
             vim.keymap.set("n", "<leader>mdp", "<cmd>MarkdownPreview<cr>", { desc = "Toggle Markdown Preview" })
-            vim.cmd([[do FileType]])
-            vim.cmd([[
-         function OpenMarkdownPreview (url)
-            let cmd = 'open -na "Google Chrome" --args --new-window ' . shellescape(a:url) . " &"
-            silent call system(cmd)
-         endfunction
-      ]])
-            vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
+            --       vim.cmd([[do FileType]])
+            --       vim.cmd([[
+            --    function OpenMarkdownPreview (url)
+            --       let cmd = 'open -na "Google Chrome" --args --new-window ' . shellescape(a:url) . " &"
+            --       silent call system(cmd)
+            --    endfunction
+            -- ]])
+            --       vim.g.mkdp_browserfunc = "OpenMarkdownPreview"
         end,
     },
     {

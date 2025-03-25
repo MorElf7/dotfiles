@@ -109,13 +109,13 @@ return {
     },
     keys = {
         -- Top Pickers & Explorer
-        -- {
-        --     "<leader><space>",
-        --     function()
-        --         Snacks.picker.smart()
-        --     end,
-        --     desc = "Smart Find Files",
-        -- },
+        {
+            "<leader><space>",
+            function()
+                Snacks.picker.smart()
+            end,
+            desc = "Smart Find Files",
+        },
         {
             "<leader>,",
             function()
@@ -169,9 +169,9 @@ return {
         {
             "<leader>ff",
             function()
-                Snacks.picker.smart()
+                Snacks.picker.files()
             end,
-            desc = "Smart Find Files",
+            desc = "Find Files",
         },
         {
             "<leader>fg",
@@ -233,7 +233,7 @@ return {
         {
             "<leader>gd",
             function()
-                Snacks.picker.git_dff()
+                Snacks.picker.git_diff()
             end,
             desc = "Git Diff (Hunks)",
         },
