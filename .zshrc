@@ -1,7 +1,7 @@
 # Autostart X at Login
-if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
-    exec startx
-fi
+# if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+#     exec startx
+# fi
 
 # Export
 
@@ -42,6 +42,7 @@ compinit -C
 # Alias
 
 # alias ip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
+alias python="python3"
 alias ka="sudo $(which kanata) -c $HOME/.config/kanata/qwerty.kbd"
 alias v="fd -t f -H -E .git -E .venv -L | fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}' | xargs nvim"
 alias ls="eza -la"
@@ -75,9 +76,8 @@ _fzf_compgen_dir() {
 }
 
 # Source runtime
-eval "$(thefuck --alias)"
+# eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
-eval "$(fzf --zsh)"
 eval "$(register-python-argcomplete pipx)"
 eval "$(hub alias -s)"
 
@@ -91,9 +91,6 @@ fastfetch
 
 source $HOME/.local/scripts/commands
 
-# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
@@ -103,3 +100,5 @@ bindkey -s "^G" "tmux-personal\n"
 bindkey "^O" clear-screen
 bindkey -v
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
