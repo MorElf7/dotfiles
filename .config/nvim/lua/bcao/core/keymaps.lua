@@ -59,3 +59,6 @@ keymap.set("n", "<leader>w", "<cmd>noautocmd w<cr>")
 
 keymap.set("n", "j", "gj")
 keymap.set("n", "k", "gk")
+
+keymap.set("n", "H", "^")
+keymap.set("n", "L", "$")

@@ -41,8 +41,8 @@ compinit -C
 
 # Alias
 
-# alias ip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
-alias python="python3"
+alias ip="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
+# alias python="python3"
 alias ka="sudo $(which kanata) -c $HOME/.config/kanata/qwerty.kbd"
 alias v="fd -t f -H -E .git -E .venv -L | fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}' | xargs nvim"
 alias ls="eza -la"
@@ -78,6 +78,7 @@ _fzf_compgen_dir() {
 # Source runtime
 # eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
+source <(fzf --zsh)
 eval "$(register-python-argcomplete pipx)"
 eval "$(hub alias -s)"
 
@@ -101,4 +102,4 @@ bindkey "^O" clear-screen
 bindkey -v
 
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
