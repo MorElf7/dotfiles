@@ -57,7 +57,7 @@ bindsym $mod+Return exec kitty
 bindsym $mod+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+#bindsym $mod+d exec --no-startup-id dmenu_run
 
 # logout exit 3
 # bindsym $mod+Delete exec --no-startup-id i3 exit
