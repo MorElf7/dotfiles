@@ -98,8 +98,6 @@ source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Keybinds
 bindkey -s "^F" "tmux-sessionizer\n"
 bindkey -s "^G" "tmux-personal\n"
-bindkey "^O" clear-screen
 bindkey -v
 
-
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+exec fish

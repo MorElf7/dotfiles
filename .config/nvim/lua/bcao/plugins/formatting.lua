@@ -20,6 +20,7 @@ return {
                 tex = { "latexindent" },
                 sh = { "shfmt" },
                 xml = { "xmlformatter" },
+                fish = { "fish_indent" },
             },
             format_on_save = {
                 -- These options will be passed to conform.format()
