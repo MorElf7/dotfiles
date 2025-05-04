@@ -100,4 +100,4 @@ bindkey -s "^F" "tmux-sessionizer\n"
 bindkey -s "^G" "tmux-personal\n"
 bindkey -v
 
-exec fish
+source /opt/ros/noetic/setup.zsh
