@@ -19,7 +19,7 @@ config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 -- config.window_background_opacity = 0.9
 -- config.macos_window_background_blur = 10
-config.window_decorations = "NONE"
+config.window_decorations = "RESIZE"
 -- config.tab_bar_at_bottom = false
 config.show_new_tab_button_in_tab_bar = false
 
@@ -32,15 +32,17 @@ end
 
 wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
 	local edge_background = "#1e1e2e"
-	local background = "#1e1e2e"
-	local foreground = "#808080"
+	local background = "#4c4f69"
+	local foreground = "#eff1f5"
+	local index_bg = "#4c4f69"
+	local index_fg = "#eff1f5"
 
 	if tab.is_active then
-		background = "#cba6f7"
-		foreground = "#313244"
+		index_bg = "#cba6f7"
+		index_fg = "#313244"
 	elseif hover then
-		background = "#3b3052"
-		foreground = "#909090"
+		index_bg = "#cba6f7"
+		index_fg = "#313244"
 	end
 
 	local edge_foreground = background
@@ -53,12 +55,14 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 
 	return {
 		{ Background = { Color = edge_background } },
-		{ Foreground = { Color = edge_foreground } },
-		{ Text = SOLID_LEFT_DIV },
+		{ Foreground = { Color = index_bg } },
+		{ Text = " " .. SOLID_LEFT_DIV },
+		{ Background = { Color = index_bg } },
+		{ Foreground = { Color = index_fg } },
+		{ Text = "" .. tab.tab_index + 1 .. " " },
 		{ Background = { Color = background } },
 		{ Foreground = { Color = foreground } },
-		{ Text = "" .. tab.tab_index + 1 .. ": " },
-		{ Text = title },
+		{ Text = " " .. title },
 		{ Background = { Color = edge_background } },
 		{ Foreground = { Color = edge_foreground } },
 		{ Text = SOLID_RIGHT_DIV },

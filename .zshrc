@@ -79,7 +79,7 @@ _fzf_compgen_dir() {
 # eval "$(thefuck --alias)"
 eval "$(zoxide init zsh)"
 source <(fzf --zsh)
-eval "$(register-python-argcomplete pipx)"
+# eval "$(register-python-argcomplete pipx)"
 eval "$(hub alias -s)"
 
 # Config starship prompt
@@ -100,4 +100,3 @@ bindkey -s "^F" "tmux-sessionizer\n"
 bindkey -s "^G" "tmux-personal\n"
 bindkey -v
 
-source /opt/ros/noetic/setup.zsh
