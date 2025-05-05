@@ -30,7 +30,7 @@ local config = {
         "-Declipse.product=org.eclipse.jdt.ls.core.product",
         "-Dlog.protocol=true",
         "-Dlog.level=ALL",
-        "-Xmx1g",
+        "-Xmx4g",
         "--add-modules=ALL-SYSTEM",
         "--add-opens",
         "java.base/java.util=ALL-UNNAMED",
@@ -40,7 +40,7 @@ local config = {
         "-jar",
         vim.fn.glob(home .. "/.local/share/nvim/mason/packages/jdtls/plugins/org.eclipse.equinox.launcher_*.jar"),
         "-configuration",
-        home .. "/.local/share/nvim/mason/packages/jdtls/config_mac",
+        home .. "/.local/share/nvim/mason/packages/jdtls/config_linux",
         "-data",
         workspace_dir,
     },
@@ -50,8 +50,27 @@ local config = {
         java = {
             signatureHelp = { enabled = true },
             extendedClientCapabilities = extendedClientCapabilities,
+            contentProvider = { preferred = "fernflower" },
             maven = {
                 downloadSources = true,
+            },
+            completion = {
+                favoriteStaticMembers = {
+                    "org.hamcrest.MatcherAssert.assertThat",
+                    "org.hamcrest.Matchers.*",
+                    "org.hamcrest.CoreMatchers.*",
+                    "org.junit.jupiter.api.Assertions.*",
+                    "java.util.Objects.requireNonNull",
+                    "java.util.Objects.requireNonNullElse",
+                    "org.mockito.Mockito.*",
+                },
+                filteredTypes = {
+                    "com.sun.*",
+                    "io.micrometer.shaded.*",
+                    "java.awt.*",
+                    "jdk.*",
+                    "sun.*",
+                },
             },
             referencesCodeLens = {
                 enabled = true,
@@ -84,20 +103,20 @@ config["on_attach"] = function(client, bufnr)
     opts.buffer = bufnr
 
     -- set keybinds
-    opts.desc = "Show LSP references"
-    keymap.set("n", "<leader>cr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
-
-    opts.desc = "Go to declaration"
-    keymap.set("n", "<leader>cD", vim.lsp.buf.declaration, opts) -- go to declaration
-
-    opts.desc = "Show LSP definitions"
-    keymap.set("n", "<leader>cd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
-
-    opts.desc = "Show LSP implementations"
-    keymap.set("n", "<leader>ci", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
-
-    opts.desc = "Show LSP type definitions"
-    keymap.set("n", "<leader>ct", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+    -- opts.desc = "Show LSP references"
+    -- keymap.set("n", "<leader>cr", "<cmd>Telescope lsp_references<CR>", opts) -- show definition, references
+    --
+    -- opts.desc = "Go to declaration"
+    -- keymap.set("n", "<leader>cD", vim.lsp.buf.declaration, opts) -- go to declaration
+    --
+    -- opts.desc = "Show LSP definitions"
+    -- keymap.set("n", "<leader>cd", "<cmd>Telescope lsp_definitions<CR>", opts) -- show lsp definitions
+    --
+    -- opts.desc = "Show LSP implementations"
+    -- keymap.set("n", "<leader>ci", "<cmd>Telescope lsp_implementations<CR>", opts) -- show lsp implementations
+    --
+    -- opts.desc = "Show LSP type definitions"
+    -- keymap.set("n", "<leader>ct", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
     opts.desc = "See available code actions"
     keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
@@ -105,17 +124,17 @@ config["on_attach"] = function(client, bufnr)
     opts.desc = "Smart rename"
     keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
 
-    opts.desc = "Show buffer diagnostics"
-    keymap.set("n", "<leader>bd", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
+    -- opts.desc = "Show buffer diagnostics"
+    -- keymap.set("n", "<leader>bd", "<cmd>Telescope diagnostics bufnr=0<CR>", opts) -- show  diagnostics for file
 
-    opts.desc = "Go to previous diagnostic"
-    keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
-
-    opts.desc = "Go to next diagnostic"
-    keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
-
-    opts.desc = "Show documentation for what is under cursor"
-    keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
+    -- opts.desc = "Go to previous diagnostic"
+    -- keymap.set("n", "[d", vim.diagnostic.goto_prev, opts) -- jump to previous diagnostic in buffer
+    --
+    -- opts.desc = "Go to next diagnostic"
+    -- keymap.set("n", "]d", vim.diagnostic.goto_next, opts) -- jump to next diagnostic in buffer
+    --
+    -- opts.desc = "Show documentation for what is under cursor"
+    -- keymap.set("n", "K", vim.lsp.buf.hover, opts) -- show documentation for what is under cursor
 
     opts.desc = "Restart LSP"
     keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary

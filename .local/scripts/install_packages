@@ -1,0 +1,94 @@
+#!/bin/bash
+
+# Define package mappings for different distributions
+declare -A package_map
+package_map[fd_ubuntu]=fdfind
+package_map[fd_arch]=fd
+
+# List of common packages to install
+common_packages=(git curl wget neovim fd eza zoxide fzf yazi ghostty)
+
+# Detect the Linux distribution
+if [[ -f /etc/os-release ]]; then
+    source /etc/os-release
+    distro=$ID
+else
+    echo "Unable to determine Linux distribution. Exiting."
+    exit 1
+fi
+
+# Function to install yay if not installed
+install_yay() {
+    if ! command -v yay &>/dev/null; then
+        echo "yay not found. Installing yay..."
+        sudo pacman -S --needed base-devel git --noconfirm
+        git clone https://aur.archlinux.org/yay-bin.git /tmp/yay-bin
+        cd /tmp/yay-bin || exit
+        makepkg -si --noconfirm
+        cd - || exit
+        rm -rf /tmp/yay-bin
+    fi
+}
+
+# Function to map package names
+map_package_name() {
+    local package=$1
+    case "$distro" in
+    ubuntu | debian)
+        echo "${package_map[${package}_ubuntu]:-$package}"
+        ;;
+    arch)
+        echo "${package_map[${package}_arch]:-$package}"
+        ;;
+    *)
+        echo "$package"
+        ;;
+    esac
+}
+
+# Function to check if a package is installed
+is_installed() {
+    if command -v dpkg &>/dev/null; then
+        dpkg -l | grep -qw "$1"
+    elif command -v pacman &>/dev/null; then
+        pacman -Q "$1" &>/dev/null
+    else
+        return 1
+    fi
+}
+
+# Separate packages into those needing installation and those needing updating
+install_list=()
+update_list=()
+for package in "${common_packages[@]}"; do
+    mapped_package=$(map_package_name "$package")
+    if is_installed "$mapped_package"; then
+        update_list+=("$mapped_package")
+    else
+        install_list+=("$mapped_package")
+    fi
+done
+
+# Install and update packages in batch
+case "$distro" in
+ubuntu | debian)
+    if [[ ${#install_list[@]} -gt 0 ]]; then
+        sudo apt-get install -y "${install_list[@]}"
+    fi
+    if [[ ${#update_list[@]} -gt 0 ]]; then
+        sudo apt-get install --only-upgrade -y "${update_list[@]}"
+    fi
+    ;;
+arch)
+    install_yay
+    if [[ ${#install_list[@]} -gt 0 || ${#update_list[@]} -gt 0 ]]; then
+        yay -Syu --noconfirm "${install_list[@]}" "${update_list[@]}"
+    fi
+    ;;
+*)
+    echo "Unsupported Linux distribution: $distro"
+    exit 1
+    ;;
+esac
+
+echo "All packages are installed and up to date."

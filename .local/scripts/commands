@@ -2,8 +2,8 @@
 
 # Setup python virtual environment
 pyvenv() {
-  python3 -m venv venv
-  source venv/bin/activate
+  python3 -m venv .venv
+  source .venv/bin/activate
 }
 
 # Yazi
@@ -28,7 +28,7 @@ tmux-sessionizer() {
       return 0
   fi
 
-  selected_name=$(basename "$selected" | tr . _)
+  selected_name=$(basename "$selected" | tr ":,. " "____")
   tmux_running=$(pgrep tmux)
 
   if [[ -z $TMUX ]] && [[ -z $tmux_running ]]; then
@@ -67,3 +67,11 @@ tmux-personal() {
     tmux attach -t $selected_name
   fi
 }
+
+
+# Clone zsh-autosuggestion and zsh-syntax-highlighting: zsh plugins
+clone_zsh_plugins() {
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
+}
+

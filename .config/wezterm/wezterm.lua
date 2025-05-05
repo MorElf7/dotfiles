@@ -1,6 +1,7 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 local sessionizer = require("sessionizer")
+local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm")
 local act = wezterm.action
 
 -- Colors
@@ -11,14 +12,62 @@ config.color_scheme = "Catppuccin Mocha"
 config.window_padding = {
 	left = 0,
 	right = 0,
-	top = 10,
+	top = 0,
 	bottom = 0,
 }
-config.enable_tab_bar = false
+config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 -- config.window_background_opacity = 0.9
 -- config.macos_window_background_blur = 10
 config.window_decorations = "RESIZE"
+-- config.tab_bar_at_bottom = false
+config.show_new_tab_button_in_tab_bar = false
+
+local SOLID_LEFT_DIV = wezterm.nerdfonts.ple_left_half_circle_thick
+local SOLID_RIGHT_DIV = wezterm.nerdfonts.ple_right_half_circle_thick
+
+function basename(s)
+	return string.gsub(s, "(.*[/\\])(.*)", "%2")
+end
+
+wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+	local edge_background = "#1e1e2e"
+	local background = "#4c4f69"
+	local foreground = "#eff1f5"
+	local index_bg = "#4c4f69"
+	local index_fg = "#eff1f5"
+
+	if tab.is_active then
+		index_bg = "#cba6f7"
+		index_fg = "#313244"
+	elseif hover then
+		index_bg = "#cba6f7"
+		index_fg = "#313244"
+	end
+
+	local edge_foreground = background
+	local pane = tab.active_pane
+	local title = basename(pane.foreground_process_name)
+
+	-- ensure that the titles fit in the available space,
+	-- and that we have room for the edges.
+	title = wezterm.truncate_right(title, max_width - 2)
+
+	return {
+		{ Background = { Color = edge_background } },
+		{ Foreground = { Color = index_bg } },
+		{ Text = " " .. SOLID_LEFT_DIV },
+		{ Background = { Color = index_bg } },
+		{ Foreground = { Color = index_fg } },
+		{ Text = "" .. tab.tab_index + 1 .. " " },
+		{ Background = { Color = background } },
+		{ Foreground = { Color = foreground } },
+		{ Text = " " .. title },
+		{ Background = { Color = edge_background } },
+		{ Foreground = { Color = edge_foreground } },
+		{ Text = SOLID_RIGHT_DIV },
+	}
+end)
 
 config.colors = {
 	tab_bar = {
@@ -71,26 +120,6 @@ config.colors = {
 			-- The same options that were listed under the `active_tab` section above
 			-- can also be used for `inactive_tab_hover`.
 		},
-
-		-- The new tab button that let you create new tabs
-		new_tab = {
-			bg_color = "#1e1e2e",
-			fg_color = "#1e1e2e",
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `new_tab`.
-		},
-
-		-- You can configure some alternate styling when the mouse pointer
-		-- moves over the new tab button
-		new_tab_hover = {
-			bg_color = "#1e1e2e",
-			fg_color = "#1e1e2e",
-			italic = false,
-
-			-- The same options that were listed under the `active_tab` section above
-			-- can also be used for `new_tab_hover`.
-		},
 	},
 }
 
@@ -107,7 +136,6 @@ config.font = wezterm.font_with_fallback({
 	-- },
 	{
 		family = "MonaspiceNe Nerd Font Mono",
-		weight = "Regular",
 		harfbuzz_features = { "calt", "liga", "ss02", "ss03", "ss07", "ss09" },
 	},
 	-- {
@@ -127,6 +155,13 @@ config.front_end = "OpenGL"
 config.freetype_load_target = "Normal"
 config.freetype_load_flags = "NO_HINTING"
 
+-- Multiplexing
+-- config.unix_domains = {
+-- 	{
+-- 		name = "unix",
+-- 	},
+-- }
+--
 -- Scrollback
 config.scrollback_lines = 50000
 config.enable_scroll_bar = false
@@ -143,7 +178,7 @@ config.max_fps = 120
 config.default_workspace = "personal"
 
 -- Keybinds
-config.disable_default_key_bindings = true
+-- config.disable_default_key_bindings = true
 config.leader = { key = "a", mods = "CTRL" }
 
 wezterm.on("update-right-status", function(window, pane)
@@ -151,7 +186,7 @@ wezterm.on("update-right-status", function(window, pane)
 end)
 
 config.keys = {
-	-- { key = "a", mods = "LEADER|CTRL", action = act({ SendString = "\x01" }) },
+	{ key = "a", mods = "LEADER|CTRL", action = act({ SendString = "\x01" }) },
 	{ key = "-", mods = "LEADER", action = act({ SplitVertical = { domain = "CurrentPaneDomain" } }) },
 	{ key = "v", mods = "LEADER", action = act({ SplitHorizontal = { domain = "CurrentPaneDomain" } }) },
 	{ key = "m", mods = "LEADER", action = act.TogglePaneZoomState },
@@ -172,20 +207,20 @@ config.keys = {
 	{ key = "d", mods = "LEADER", action = act({ CloseCurrentPane = { confirm = true } }) },
 	{ key = "[", mods = "LEADER", action = act.ActivateCopyMode },
 	-- Vim-navigator
-	{ key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
-	{ key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
-	{ key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
-	{ key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
+	-- { key = "h", mods = "LEADER", action = act.ActivatePaneDirection("Left") },
+	-- { key = "j", mods = "LEADER", action = act.ActivatePaneDirection("Down") },
+	-- { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
+	-- { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
 	-- Switch to the default workspace
 	{
-		key = "p",
-		mods = "LEADER",
+		key = "g",
+		mods = "ALT",
 		action = act.SwitchToWorkspace({
 			name = "personal",
 		}),
 	},
 	-- Sessionizer
-	{ key = "o", mods = "LEADER", action = wezterm.action_callback(sessionizer.toggle) },
+	{ key = "f", mods = "ALT", action = wezterm.action_callback(sessionizer.toggle) },
 	-- Misc
 	{
 		key = "v",
@@ -212,11 +247,11 @@ config.keys = {
 		mods = "SHIFT|CTRL",
 		action = wezterm.action.DecreaseFontSize,
 	},
-	{
-		key = "Enter",
-		mods = "SUPER",
-		action = wezterm.action.SpawnWindow,
-	},
+	-- {
+	-- 	key = "Enter",
+	-- 	mods = "SUPER",
+	-- 	action = wezterm.action.SpawnWindow,
+	-- },
 	{
 		key = "w",
 		mods = "SUPER",
@@ -228,6 +263,92 @@ config.keys = {
 		action = wezterm.action.CloseCurrentTab({ confirm = true }),
 	},
 	{ key = "q", mods = "SUPER", action = wezterm.action.QuitApplication },
+	{
+		key = "s",
+		mods = "ALT",
+		action = wezterm.action_callback(function(win, pane)
+			resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state())
+			resurrect.window_state.save_window_action()
+		end),
+	},
+	{
+		key = "r",
+		mods = "ALT",
+		action = wezterm.action_callback(function(win, pane)
+			resurrect.fuzzy_loader.fuzzy_load(win, pane, function(id, label)
+				local type = string.match(id, "^([^/]+)") -- match before '/'
+				id = string.match(id, "([^/]+)$") -- match after '/'
+				id = string.match(id, "(.+)%..+$") -- remove file extention
+				local opts = {
+					relative = true,
+					restore_text = true,
+					on_pane_restore = resurrect.tab_state.default_on_pane_restore,
+				}
+				if type == "workspace" then
+					local state = resurrect.state_manager.load_state(id, "workspace")
+					resurrect.workspace_state.restore_workspace(state, opts)
+				elseif type == "window" then
+					local state = resurrect.state_manager.load_state(id, "window")
+					resurrect.window_state.restore_window(pane:window(), state, opts)
+				elseif type == "tab" then
+					local state = resurrect.state_manager.load_state(id, "tab")
+					resurrect.tab_state.restore_tab(pane:tab(), state, opts)
+				end
+			end)
+		end),
+	},
 }
+local function next_match(int)
+	local m = act.CopyMode("NextMatch")
+	if int == -1 then
+		m = act.CopyMode("PriorMatch")
+	end
+	return act.Multiple({ m, act.CopyMode("ClearSelectionMode") })
+end
+local copy_mode = nil
+local search_mode = nil
+if wezterm.gui then
+	copy_mode = wezterm.gui.default_key_tables().copy_mode
+	table.insert(copy_mode, {
+		key = "/",
+		mods = "NONE",
+		action = act.Multiple({
+			act.CopyMode("ClearPattern"),
+			act.Search({ CaseInSensitiveString = "" }),
+		}),
+	})
+	table.insert(copy_mode, { key = "p", mods = "CTRL", action = next_match(-1) })
+	table.insert(copy_mode, { key = "n", mods = "CTRL", action = next_match(1) })
+
+	search_mode = wezterm.gui.default_key_tables().search_mode
+	table.insert(search_mode, { key = "Escape", mods = "NONE", action = act.CopyMode("Close") })
+	table.insert(search_mode, { key = "Enter", mods = "NONE", action = act.ActivateCopyMode })
+end
+
+config.key_tables = {
+	copy_mode = copy_mode,
+	search_mode = search_mode,
+}
+
+resurrect.state_manager.periodic_save({
+	interval_seconds = 60 * 10,
+	save_workspaces = true,
+	save_windows = true,
+	save_tabs = true,
+})
+wezterm.on("gui-startup", resurrect.state_manager.resurrect_on_gui_startup)
+wezterm.on("resurrect.error", function(err)
+	wezterm.log_error("ERROR!")
+	wezterm.gui.gui_windows()[1]:toast_notification("resurrect", err, nil, 3000)
+end)
+
+local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
+smart_splits.apply_to_config(config, {
+	direction_keys = { "h", "j", "k", "l" },
+	modifiers = {
+		move = "CTRL",
+		resize = "ALT",
+	},
+})
 
 return config

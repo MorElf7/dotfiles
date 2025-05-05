@@ -2,6 +2,9 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    dependencies = {
+        "stevearc/aerial.nvim",
+    },
     opts = {
         bigfile = { enabled = true },
         dashboard = {
@@ -109,6 +112,13 @@ return {
     },
     keys = {
         -- Top Pickers & Explorer
+        {
+            "ga",
+            function()
+                require("aerial").snacks_picker()
+            end,
+            desc = "Aerial Pickers",
+        },
         {
             "<leader><space>",
             function()
