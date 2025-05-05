@@ -5,6 +5,23 @@ local M = {}
 
 local fd = "/usr/bin/fd"
 
+function getLastDirectory(path)
+	-- Remove trailing slash if present
+	if path:sub(-1) == "/" then
+		path = path:sub(1, -2)
+	end
+
+	-- Find the last slash in the path
+	local lastSlash = path:match(".*/()")
+
+	-- Extract the last directory name
+	if lastSlash then
+		return path:sub(lastSlash)
+	else
+		return path
+	end
+end
+
 M.toggle = function(window, pane)
 	local projects = {}
 
@@ -25,7 +42,7 @@ M.toggle = function(window, pane)
 
 	for line in stdout:gmatch("([^\n]*)\n?") do
 		local label = line
-		local id = line
+		local id = getLastDirectory(line)
 		table.insert(projects, { label = tostring(label), id = tostring(id) })
 	end
 

@@ -19,7 +19,7 @@ config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 -- config.window_background_opacity = 0.9
 -- config.macos_window_background_blur = 10
-config.window_decorations = "RESIZE"
+config.window_decorations = "NONE"
 -- config.tab_bar_at_bottom = false
 config.show_new_tab_button_in_tab_bar = false
 
@@ -62,7 +62,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		{ Text = "" .. tab.tab_index + 1 .. " " },
 		{ Background = { Color = background } },
 		{ Foreground = { Color = foreground } },
-		{ Text = " " .. title },
+		{ Text = " " .. title .. " " },
 		{ Background = { Color = edge_background } },
 		{ Foreground = { Color = edge_foreground } },
 		{ Text = SOLID_RIGHT_DIV },
@@ -156,12 +156,18 @@ config.freetype_load_target = "Normal"
 config.freetype_load_flags = "NO_HINTING"
 
 -- Multiplexing
--- config.unix_domains = {
--- 	{
--- 		name = "unix",
--- 	},
--- }
---
+config.unix_domains = {
+	{
+		name = "unix",
+	},
+}
+
+-- This causes `wezterm` to act as though it was started as
+-- `wezterm connect unix` by default, connecting to the unix
+-- domain on startup.
+-- If you prefer to connect manually, leave out this line.
+config.default_gui_startup_args = { "connect", "unix" }
+
 -- Scrollback
 config.scrollback_lines = 50000
 config.enable_scroll_bar = false
@@ -214,13 +220,13 @@ config.keys = {
 	-- Switch to the default workspace
 	{
 		key = "g",
-		mods = "ALT",
+		mods = "CTRL",
 		action = act.SwitchToWorkspace({
 			name = "personal",
 		}),
 	},
 	-- Sessionizer
-	{ key = "f", mods = "ALT", action = wezterm.action_callback(sessionizer.toggle) },
+	{ key = "f", mods = "CTRL", action = wezterm.action_callback(sessionizer.toggle) },
 	-- Misc
 	{
 		key = "v",
