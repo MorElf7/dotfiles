@@ -12,7 +12,7 @@ config.color_scheme = "Catppuccin Mocha"
 config.window_padding = {
 	left = 0,
 	right = 0,
-	top = 0,
+	top = 10,
 	bottom = 0,
 }
 config.enable_tab_bar = true
@@ -38,10 +38,10 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	local index_fg = "#eff1f5"
 
 	if tab.is_active then
-		index_bg = "#cba6f7"
+		index_bg = "#f5e0dc"
 		index_fg = "#313244"
 	elseif hover then
-		index_bg = "#cba6f7"
+		index_bg = "#f5e0dc"
 		index_fg = "#313244"
 	end
 

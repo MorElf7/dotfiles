@@ -1,20 +1,26 @@
 {
   "layer": "top", // Waybar at top layer
   // "width": 1280, // Waybar width
-  "spacing": 4, // Gaps between modules (4px)
-  "height": 24,
+  // "spacing": 4, // Gaps between modules (4px)
+  "height": 28,
   "position": "top",
   "mod": "dock",
   "reload_style_on_change": true,
-  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-left": ["hyprland/workspaces", "custom/padd", "hyprland/window"],
   "modules-center": ["custom/spotify"],
   "modules-right": [
+    "custom/l_end",
     "cpu",
     "memory",
+    "custom/r_end",
+    "custom/l_end",
     "battery",
     "pulseaudio",
     "network",
+    "custom/r_end",
+    "custom/l_end",
     "clock",
+    "custom/r_end",
   ],
   // Modules configuration
   "hyprland/workspaces": {
@@ -124,5 +130,23 @@
     "on-scroll-down": "playerctl -p spotify previous",
     "exec": "$HOME/.config/waybar/scripts/mediaplayer.py --player spotify 2> /dev/null",
     "exec-if": "pgrep spotify",
+  },
+
+  "custom/l_end": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false,
+  },
+
+  "custom/r_end": {
+    "format": " ",
+    "interval": "once",
+    "tooltip": false,
+  },
+
+  "custom/padd": {
+    "format": "  ",
+    "interval": "once",
+    "tooltip": false,
   },
 }
