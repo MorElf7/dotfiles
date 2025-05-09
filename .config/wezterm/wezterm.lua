@@ -17,7 +17,7 @@ config.window_padding = {
 }
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
--- config.window_background_opacity = 0.9
+config.window_background_opacity = 0.95
 -- config.macos_window_background_blur = 10
 config.window_decorations = "NONE"
 -- config.tab_bar_at_bottom = true
@@ -208,7 +208,7 @@ config.enable_scroll_bar = false
 -- Misc
 config.audible_bell = "Disabled"
 config.enable_wayland = true
--- config.term = "xterm-kitty"
+config.term = "xterm-256color"
 config.automatically_reload_config = true
 config.debug_key_events = true
 config.enable_kitty_graphics = true
