@@ -5,8 +5,8 @@ local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.
 local act = wezterm.action
 
 -- Colors
--- config.color_scheme = "kanagawabones"
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "kanagawabones"
+-- config.color_scheme = "Catppuccin Mocha"
 
 -- Window Appearance
 config.window_padding = {
@@ -20,7 +20,7 @@ config.use_fancy_tab_bar = false
 -- config.window_background_opacity = 0.9
 -- config.macos_window_background_blur = 10
 config.window_decorations = "NONE"
--- config.tab_bar_at_bottom = false
+-- config.tab_bar_at_bottom = true
 config.show_new_tab_button_in_tab_bar = false
 
 local SOLID_LEFT_DIV = wezterm.nerdfonts.ple_left_half_circle_thick
@@ -70,6 +70,39 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 end)
 
 config.colors = {
+	-- foreground = "#C5C9C7",
+	-- background = "#14171d",
+	--
+	-- -- cursor_bg = "#14171d",
+	-- -- cursor_fg = "#C5C9C7",
+	-- -- cursor_border = "#C5C9C7",
+	--
+	-- selection_fg = "#C5C9C7",
+	-- selection_bg = "#393B42",
+	--
+	-- scrollbar_thumb = "#393B42",
+	-- split = "#393B42",
+	--
+	-- ansi = {
+	-- 	"#14171d",
+	-- 	"#C4746E",
+	-- 	"#8A9A7B",
+	-- 	"#C4B28A",
+	-- 	"#8BA4B0",
+	-- 	"#A292A3",
+	-- 	"#8EA4A2",
+	-- 	"#A4A7A4",
+	-- },
+	-- brights = {
+	-- 	"#A4A7A4",
+	-- 	"#E46876",
+	-- 	"#87A987",
+	-- 	"#E6C384",
+	-- 	"#7FB4CA",
+	-- 	"#938AA9",
+	-- 	"#7AA89F",
+	-- 	"#C5C9C7",
+	-- },
 	tab_bar = {
 		-- The color of the strip that goes along the top of the window
 		-- (does not apply when fancy tab bar is in use)
@@ -148,7 +181,7 @@ config.font = wezterm.font_with_fallback({
 		weight = "Regular",
 		harfbuzz_features = { "calt", "zero", "cv14", "cv01", "cv02", "ss05", "ss04", "cv18", "ss03", "cv15" },
 	},
-	-- { family = "SF Pro", weight = "Regular" },
+	{ family = "SF Pro", weight = "Regular" },
 })
 config.font_size = 11
 config.front_end = "OpenGL"

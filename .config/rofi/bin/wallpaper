@@ -1,0 +1,4 @@
+#!/bin/sh
+
+wallpaper=$(ls $HOME/wallpaper/ | rofi -dmenu -i -p "Select wallpaper:" -font "FiraCode Nerd Font 11" -config $HOME/.config/rofi/config/wallpaper.rasi)
+[ -n "$wallpaper" ] && swww img $HOME/wallpaper/$wallpaper --transition-type="grow" --transition-fps="120" --transition-duration="0.6"
