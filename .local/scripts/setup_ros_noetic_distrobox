@@ -1,0 +1,70 @@
+#!/bin/bash
+
+set -e
+
+CONTAINER_NAME="ubuntu-noetic"
+IMAGE="quay.io/toolbx/ubuntu-toolbox:20.04 "
+
+echo "🔓 Granting X server access to current user..."
+xhost +si:localuser:$(whoami)
+
+echo "🧪 Checking for NVIDIA GPU..."
+
+USE_NVIDIA=""
+if command -v nvidia-smi &>/dev/null && [ -e /dev/nvidiactl ]; then
+    echo "✅ NVIDIA GPU detected — enabling Distrobox NVIDIA support."
+    USE_NVIDIA="--nvidia"
+else
+    echo "⚠️ No NVIDIA GPU or drivers found — proceeding without GPU acceleration."
+fi
+
+echo "🗑️ Removing any existing container with the same name..."
+distrobox rm --force $CONTAINER_NAME || true
+
+echo "📦 Creating Distrobox container: $CONTAINER_NAME"
+
+distrobox create \
+    --name $CONTAINER_NAME \
+    --image $IMAGE \
+    $USE_NVIDIA \
+    --volume /tmp/.X11-unix:/tmp/.X11-unix \
+    --volume /dev/dri:/dev/dri \
+    --volume $HOME/.Xauthority:/home/$USER/.Xauthority \
+    --volume /etc/machine-id:/etc/machine-id:ro
+
+echo "👤 Please now enter the container to set your password and shell."
+echo "Run:"
+echo ""
+echo "    distrobox enter $CONTAINER_NAME"
+echo ""
+echo "Inside the container:"
+echo "  - Run: chsh -s /bin/bash"
+echo "  - Run: sudo apt install licicu-dev"
+echo "      - If this failed with error: /usr/lib/x86_64-linux-gnu/libicudata.so: "
+echo "Exit and stop the container"
+echo "Then run sudo mv -f /usr/lib/x86_64-linux-gnu/libicudata.so ~"
+echo ""
+read -p "Press Enter AFTER you've set the password and shell to continue with ROS setup..."
+
+echo "🚀 Running ROS and GUI setup inside container as root..."
+
+distrobox enter $CONTAINER_NAME -- bash -c '
+  echo "🔧 Setting environment variables in ~/.bashrc"
+  echo "export DISPLAY=:1" >> ~/.bashrc
+  echo "export XAUTHORITY=/home/$USER/.Xauthority" >> ~/.bashrc
+  source ~/.bashrc
+
+  echo "🌐 Updating apt and installing essentials"
+  sudo apt update
+  sudo apt install -y curl gnupg2 lsb-release x11-apps mesa-utils libgl1-mesa-glx software-properties-common
+
+  echo "🧠 Adding ROS Noetic sources"
+  wget -c https://raw.githubusercontent.com/qboticslabs/ros_install_noetic/master/ros_install_noetic.sh && chmod +x ./ros_install_noetic.sh && ./ros_install_noetic.sh
+
+  echo "🔧 Setting up ROS environment in .bashrc"
+  echo "source /opt/ros/noetic/setup.bash" >> /home/$USER/.bashrc
+
+  echo "✅ Done. You can now run: distrobox enter $CONTAINER_NAME and use ROS tools like rviz."
+'
+
+echo "✅ Container is ready. Enter it with: distrobox enter $CONTAINER_NAME"

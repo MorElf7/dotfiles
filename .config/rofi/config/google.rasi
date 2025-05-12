@@ -67,8 +67,14 @@ listview {
 }
 
 mainbox {
-  children: [inputbar, message, listview];
+  children: [inputbar, message];
   background-color: @BGA;
+}
+
+message {
+  padding: 12;
+  background-color: @surface0;
+  text-color: @fg;
 }
 
 prompt {

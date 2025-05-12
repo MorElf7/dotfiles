@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rofi -show google -modes google:$HOME/.config/rofi/bin/google-rofi \
+    -theme "$HOME"/.config/rofi/config/google.rasi \ 

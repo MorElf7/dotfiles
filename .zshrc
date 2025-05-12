@@ -96,7 +96,7 @@ source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Keybinds
-bindkey -s "^F" "tmux-sessionizer\n"
-bindkey -s "^G" "tmux-personal\n"
-bindkey -v
+# bindkey -s "^F" "tmux-sessionizer\n"
+# bindkey -s "^G" "tmux-personal\n"
+# bindkey -v
 

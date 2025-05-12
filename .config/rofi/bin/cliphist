@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+rofi -modi clipboard:$HOME/.config/rofi/bin/cliphist-rofi -show clipboard \
+    -theme "$HOME"/.config/rofi/config/default.rasi
