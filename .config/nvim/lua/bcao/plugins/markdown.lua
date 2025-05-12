@@ -2,6 +2,7 @@ return {
     {
         "3rd/image.nvim",
         ft = "markdown",
+        enabled = false,
         config = function()
             require("image").setup({
                 backend = "kitty", -- ueberzug as alternative for non kitty terminal

@@ -251,15 +251,15 @@ config.keys = {
 	-- { key = "k", mods = "LEADER", action = act.ActivatePaneDirection("Up") },
 	-- { key = "l", mods = "LEADER", action = act.ActivatePaneDirection("Right") },
 	-- Switch to the default workspace
-	{
-		key = "g",
-		mods = "CTRL",
-		action = act.SwitchToWorkspace({
-			name = "personal",
-		}),
-	},
-	-- Sessionizer
-	{ key = "f", mods = "CTRL", action = wezterm.action_callback(sessionizer.toggle) },
+	-- {
+	-- 	key = "g",
+	-- 	mods = "CTRL",
+	-- 	action = act.SwitchToWorkspace({
+	-- 		name = "personal",
+	-- 	}),
+	-- },
+	-- -- Sessionizer
+	-- { key = "f", mods = "CTRL", action = wezterm.action_callback(sessionizer.toggle) },
 	-- Misc
 	{
 		key = "v",
@@ -369,17 +369,17 @@ config.key_tables = {
 	search_mode = search_mode,
 }
 
-resurrect.state_manager.periodic_save({
-	interval_seconds = 60 * 10,
-	save_workspaces = true,
-	save_windows = true,
-	save_tabs = true,
-})
-wezterm.on("gui-startup", resurrect.state_manager.resurrect_on_gui_startup)
-wezterm.on("resurrect.error", function(err)
-	wezterm.log_error("ERROR!")
-	wezterm.gui.gui_windows()[1]:toast_notification("resurrect", err, nil, 3000)
-end)
+-- resurrect.state_manager.periodic_save({
+-- 	interval_seconds = 60 * 10,
+-- 	save_workspaces = true,
+-- 	save_windows = true,
+-- 	save_tabs = true,
+-- })
+-- wezterm.on("gui-startup", resurrect.state_manager.resurrect_on_gui_startup)
+-- wezterm.on("resurrect.error", function(err)
+-- 	wezterm.log_error("ERROR!")
+-- 	wezterm.gui.gui_windows()[1]:toast_notification("resurrect", err, nil, 3000)
+-- end)
 
 local smart_splits = wezterm.plugin.require("https://github.com/mrjones2014/smart-splits.nvim")
 smart_splits.apply_to_config(config, {

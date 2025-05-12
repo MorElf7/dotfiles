@@ -13,17 +13,6 @@ return {
         },
     },
     {
-        "stevearc/dressing.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("dressing").setup({
-                input = {
-                    enabled = false,
-                },
-            })
-        end,
-    },
-    {
         "lewis6991/gitsigns.nvim",
         event = { "BufRead", "BufNewFile" },
         config = function()
@@ -107,92 +96,10 @@ return {
             local lualine = require("lualine")
             local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
-            -- Get the colors for the current theme
-            local colors = require("kanagawa.colors").setup().palette
-
-            local kanagawa = {
-                normal = {
-                    a = { bg = colors.crystalBlue, fg = colors.sumiInk4, gui = "bold" },
-                    b = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-                    c = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-                },
-                insert = {
-                    a = { bg = colors.autumnGreen, fg = colors.sumiInk4, gui = "bold" },
-                    b = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-                    c = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-                },
-                visual = {
-                    a = { bg = colors.oniViolet, fg = colors.sumiInk4, gui = "bold" },
-                    b = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-                    c = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-                },
-                command = {
-                    a = { bg = colors.autumnYellow, fg = colors.sumiInk4, gui = "bold" },
-                    b = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-                    c = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-                },
-                replace = {
-                    a = { bg = colors.autumnRed, fg = colors.sumiInk4, gui = "bold" },
-                    b = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-                    c = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-                },
-                inactive = {
-                    a = { bg = colors.sumiInk3, fg = colors.fujiWhite, gui = "bold" },
-                    b = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-                    c = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-                },
-            }
-
-            -- local theme = require("kanso.colors").setup().theme
-            --
-            -- local kanso = {}
-            --
-            -- kanso.normal = {
-            --     a = { bg = theme.syn.fun, fg = theme.ui.bg },
-            --     b = { bg = theme.ui.none, fg = theme.syn.fun },
-            --     c = { bg = theme.ui.none, fg = theme.ui.fg },
-            -- }
-            --
-            -- kanso.insert = {
-            --     a = { bg = theme.diag.ok, fg = theme.ui.bg },
-            --     b = { bg = theme.ui.none, fg = theme.diag.ok },
-            --     c = { bg = theme.ui.none, fg = theme.ui.fg },
-            -- }
-            --
-            -- kanso.command = {
-            --     a = { bg = theme.syn.operator, fg = theme.ui.bg },
-            --     b = { bg = theme.ui.none, fg = theme.syn.operator },
-            --     c = { bg = theme.ui.none, fg = theme.ui.fg },
-            -- }
-            --
-            -- kanso.visual = {
-            --     a = { bg = theme.syn.keyword, fg = theme.ui.bg },
-            --     b = { bg = theme.ui.none, fg = theme.syn.keyword },
-            --     c = { bg = theme.ui.none, fg = theme.ui.fg },
-            -- }
-            --
-            -- kanso.replace = {
-            --     a = { bg = theme.syn.constant, fg = theme.ui.bg },
-            --     b = { bg = theme.ui.none, fg = theme.syn.constant },
-            --     c = { bg = theme.ui.none, fg = theme.ui.fg },
-            -- }
-            --
-            -- kanso.inactive = {
-            --     a = { bg = theme.ui.none, fg = theme.ui.fg_dim },
-            --     b = { bg = theme.ui.none, fg = theme.ui.fg_dim },
-            --     c = { bg = theme.ui.none, fg = theme.ui.fg_dim },
-            -- }
-            --
-            -- if vim.g.kanso_lualine_bold then
-            --     for _, mode in pairs(kanso) do
-            --         mode.a.gui = "bold"
-            --     end
-            -- end
-            -- configure lualine with modified theme
             lualine.setup({
                 options = {
                     -- theme = kanso,
-                    theme = kanagawa,
+                    theme = "kanagawa",
                     -- theme = "catppuccin",
                 },
                 sections = {
