@@ -1,7 +1,20 @@
 return {
     {
-        "rebelot/kanagawa.nvim",
+        "webhooked/kanso.nvim",
+        lazy = false,
         enabled = false,
+        priority = 1000,
+        config = function()
+            require("kanso").setup({
+                theme = "ink",
+                transparent = true,
+            })
+            vim.cmd("colorscheme kanso")
+        end,
+    },
+    {
+        "rebelot/kanagawa.nvim",
+        enabled = true,
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             require("kanagawa").setup({
@@ -14,7 +27,7 @@ return {
     {
         "catppuccin/nvim",
         name = "catppuccin",
-        enabled = true,
+        enabled = false,
         priority = 1000, -- make sure to load this before all the other start plugins
         config = function()
             -- load the colorscheme here

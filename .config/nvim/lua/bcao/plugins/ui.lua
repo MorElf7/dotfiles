@@ -13,17 +13,6 @@ return {
         },
     },
     {
-        "stevearc/dressing.nvim",
-        event = "VeryLazy",
-        config = function()
-            require("dressing").setup({
-                input = {
-                    enabled = false,
-                },
-            })
-        end,
-    },
-    {
         "lewis6991/gitsigns.nvim",
         event = { "BufRead", "BufNewFile" },
         config = function()
@@ -107,47 +96,11 @@ return {
             local lualine = require("lualine")
             local lazy_status = require("lazy.status") -- to configure lazy pending updates count
 
-            -- Get the colors for the current theme
-            -- local colors = require("kanagawa.colors").setup().palette
-            --
-            -- local kanagawa = {
-            --     normal = {
-            --         a = { bg = colors.crystalBlue, fg = colors.sumiInk4, gui = "bold" },
-            --         b = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-            --         c = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-            --     },
-            --     insert = {
-            --         a = { bg = colors.autumnGreen, fg = colors.sumiInk4, gui = "bold" },
-            --         b = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-            --         c = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-            --     },
-            --     visual = {
-            --         a = { bg = colors.oniViolet, fg = colors.sumiInk4, gui = "bold" },
-            --         b = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-            --         c = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-            --     },
-            --     command = {
-            --         a = { bg = colors.autumnYellow, fg = colors.sumiInk4, gui = "bold" },
-            --         b = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-            --         c = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-            --     },
-            --     replace = {
-            --         a = { bg = colors.autumnRed, fg = colors.sumiInk4, gui = "bold" },
-            --         b = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-            --         c = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-            --     },
-            --     inactive = {
-            --         a = { bg = colors.sumiInk3, fg = colors.fujiWhite, gui = "bold" },
-            --         b = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-            --         c = { bg = colors.sumiInk3, fg = colors.fujiWhite },
-            --     },
-            -- }
-
-            -- configure lualine with modified theme
             lualine.setup({
                 options = {
-                    -- theme = kanagawa,
-                    theme = "catppuccin",
+                    -- theme = kanso,
+                    theme = "kanagawa",
+                    -- theme = "catppuccin",
                 },
                 sections = {
                     lualine_x = {

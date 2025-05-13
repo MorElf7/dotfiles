@@ -39,6 +39,7 @@ return {
                 "ruff",
                 "marksman",
                 "bashls",
+                "denols",
             },
 
             -- auto-install configured servers (with lspconfig)

@@ -109,6 +109,8 @@ return {
             },
         },
         explorer = { enabled = false },
+        image = { enabled = true, doc = { inline = false } },
+        scope = { enabled = true },
     },
     keys = {
         -- Top Pickers & Explorer

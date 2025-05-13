@@ -50,8 +50,6 @@ keymap.set(
     { desc = "Open index notes" }
 ) --  move current buffer to new tab
 
-keymap.set("n", "<leader>a", "ggVG", { desc = "Select all" })
-
 keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
 

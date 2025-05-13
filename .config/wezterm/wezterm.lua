@@ -5,21 +5,21 @@ local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.
 local act = wezterm.action
 
 -- Colors
--- config.color_scheme = "kanagawabones"
-config.color_scheme = "Catppuccin Mocha"
+config.color_scheme = "kanagawabones"
+-- config.color_scheme = "Catppuccin Mocha"
 
 -- Window Appearance
 config.window_padding = {
 	left = 0,
 	right = 0,
-	top = 0,
+	top = 10,
 	bottom = 0,
 }
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = false
 -- config.window_background_opacity = 0.9
 -- config.macos_window_background_blur = 10
-config.window_decorations = "RESIZE"
+config.window_decorations = "NONE"
 -- config.tab_bar_at_bottom = false
 config.show_new_tab_button_in_tab_bar = false
 
@@ -38,10 +38,10 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 	local index_fg = "#eff1f5"
 
 	if tab.is_active then
-		index_bg = "#cba6f7"
+		index_bg = "#f5e0dc"
 		index_fg = "#313244"
 	elseif hover then
-		index_bg = "#cba6f7"
+		index_bg = "#f5e0dc"
 		index_fg = "#313244"
 	end
 
@@ -62,7 +62,7 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
 		{ Text = "" .. tab.tab_index + 1 .. " " },
 		{ Background = { Color = background } },
 		{ Foreground = { Color = foreground } },
-		{ Text = " " .. title },
+		{ Text = " " .. title .. " " },
 		{ Background = { Color = edge_background } },
 		{ Foreground = { Color = edge_foreground } },
 		{ Text = SOLID_RIGHT_DIV },
@@ -150,18 +150,24 @@ config.font = wezterm.font_with_fallback({
 	},
 	-- { family = "SF Pro", weight = "Regular" },
 })
-config.font_size = 11
+config.font_size = 13
 config.front_end = "OpenGL"
 config.freetype_load_target = "Normal"
 config.freetype_load_flags = "NO_HINTING"
 
 -- Multiplexing
--- config.unix_domains = {
--- 	{
--- 		name = "unix",
--- 	},
--- }
---
+config.unix_domains = {
+	{
+		name = "unix",
+	},
+}
+
+-- This causes `wezterm` to act as though it was started as
+-- `wezterm connect unix` by default, connecting to the unix
+-- domain on startup.
+-- If you prefer to connect manually, leave out this line.
+config.default_gui_startup_args = { "connect", "unix" }
+
 -- Scrollback
 config.scrollback_lines = 50000
 config.enable_scroll_bar = false
@@ -182,7 +188,7 @@ config.default_workspace = "personal"
 config.leader = { key = "a", mods = "CTRL" }
 
 wezterm.on("update-right-status", function(window, pane)
-	window:set_right_status(window:active_workspace())
+	window:set_right_status(window:active_workspace() .. " ")
 end)
 
 config.keys = {
@@ -214,13 +220,13 @@ config.keys = {
 	-- Switch to the default workspace
 	{
 		key = "g",
-		mods = "ALT",
+		mods = "CTRL",
 		action = act.SwitchToWorkspace({
 			name = "personal",
 		}),
 	},
 	-- Sessionizer
-	{ key = "f", mods = "ALT", action = wezterm.action_callback(sessionizer.toggle) },
+	{ key = "f", mods = "CTRL", action = wezterm.action_callback(sessionizer.toggle) },
 	-- Misc
 	{
 		key = "v",

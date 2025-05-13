@@ -15,7 +15,8 @@ title = " "
 
 #Color
 # theme = Kanagawa Wave
-theme = catppuccin-mocha
+theme = kanagawabones
+# theme = catppuccin-mocha
 
 # Keybinds 
 keybind = ctrl+shift+r=reload_config
