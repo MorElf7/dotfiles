@@ -12,6 +12,7 @@ macos-titlebar-style = transparent
 # Misc
 macos-option-as-alt = true
 title = " "
+confirm-close-surface = false
 
 #Color
 # theme = Kanagawa Wave
