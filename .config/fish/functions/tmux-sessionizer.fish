@@ -3,7 +3,7 @@ function tmux-sessionizer
     if test (count $argv) -eq 1
         set selected $argv[1]
     else
-        set selected (fd -t d -d 1 . '/home/morelf/Documents/course' '/home/morelf/Documents/projects' | fzf)
+        set selected (fd -t d -d 1 . $HOME/Documents/course $HOME/Documents/projects | fzf)
     end
 
     if test -z "$selected"
