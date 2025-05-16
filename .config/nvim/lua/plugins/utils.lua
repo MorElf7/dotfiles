@@ -336,7 +336,7 @@ return {
                 out_dir = "./latexbuild",
                 aux_dir = "./latexbuild",
             }
-            vim.g.vimtex_view_method = "skim"
+            vim.g.vimtex_view_method = "zathura"
             vim.g.vimtex_compiler_method = "latexmk"
         end,
     },
