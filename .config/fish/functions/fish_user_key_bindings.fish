@@ -3,4 +3,5 @@ function fish_user_key_bindings
 
     bind -M insert ctrl-f tmux-sessionizer
     bind -M insert ctrl-g tmux-personal
+    bind -M insert ctrl-o clear-screen
 end

@@ -88,8 +88,9 @@ return {
             },
         },
         explorer = { enabled = false },
-        image = { enabled = true, doc = { inline = false } },
+        image = { enabled = true, doc = { inline = false, max_width = 40, max_height = 20 } },
         scope = { enabled = true },
+        input = { enabled = true },
     },
     keys = {
         -- Top Pickers & Explorer
