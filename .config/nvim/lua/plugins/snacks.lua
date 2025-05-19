@@ -72,7 +72,7 @@ return {
                 wo = { wrap = true }, -- Wrap notifications
             },
         },
-        lazygit = { enabled = true },
+        lazygit = { enabled = false },
         terminal = { enabled = false },
         picker = {
             sources = {
@@ -514,20 +514,20 @@ return {
             end,
             desc = "Lazygit Current File History",
         },
-        {
-            "<leader>gg",
-            function()
-                Snacks.lazygit()
-            end,
-            desc = "Lazygit",
-        },
-        {
-            "<leader>gl",
-            function()
-                Snacks.lazygit.log()
-            end,
-            desc = "Lazygit Log (cwd)",
-        },
+        -- {
+        --     "<leader>gg",
+        --     function()
+        --         Snacks.lazygit()
+        --     end,
+        --     desc = "Lazygit",
+        -- },
+        -- {
+        --     "<leader>gl",
+        --     function()
+        --         Snacks.lazygit.log()
+        --     end,
+        --     desc = "Lazygit Log (cwd)",
+        -- },
         {
             "<leader>nd",
             function()
