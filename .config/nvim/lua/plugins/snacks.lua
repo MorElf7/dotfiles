@@ -3,7 +3,7 @@ return {
     priority = 1000,
     lazy = false,
     dependencies = {
-        "stevearc/aerial.nvim",
+        -- "stevearc/aerial.nvim",
     },
     opts = {
         bigfile = { enabled = true },

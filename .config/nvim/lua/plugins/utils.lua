@@ -194,7 +194,7 @@ return {
         {
             "nvim-treesitter/nvim-treesitter",
             -- commit = "17e77749c1f14f7e2bbae8c92c1b1cad1c2f26a9",
-            -- event = { "BufRead", "BufNewFile" },
+            event = { "BufRead", "BufNewFile" },
             build = ":TSUpdate",
             dependencies = {
                 "windwp/nvim-ts-autotag",
@@ -223,6 +223,7 @@ return {
                         "python",
                         "go",
                         "tsx",
+                        "hyprlang",
                         "yaml",
                         "html",
                         "css",

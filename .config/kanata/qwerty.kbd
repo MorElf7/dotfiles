@@ -4,7 +4,7 @@
 )
 
 (defsrc
-  caps a s d f j k l ;
+  caps a s d f j k l ; menu 1 2
 )
 (defvar
   tap-time 100
@@ -22,9 +22,20 @@
   k (tap-hold $tap-time $hold-time k rctl)
   l (tap-hold $tap-time $hold-time l ralt)
   ; (tap-hold $tap-time $hold-time ; rmet)
+  switcher (layer-while-held switcher)
+  switch-base (layer-switch base)
+  switch-game (layer-switch game)
 )
 
 (deflayer base
-  @escctrl @a @s @d @f @j @k @l @;
+  @escctrl @a @s @d @f @j @k @l @; @switcher 1 2
+)
+
+(deflayer switcher
+  caps a s d f j k l ; @switcher @switch-base @switch-game
+)
+
+(deflayer game
+  caps a s d f j k l ; @switcher 1 2
 )
 
