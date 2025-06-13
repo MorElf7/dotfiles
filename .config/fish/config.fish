@@ -42,6 +42,7 @@ set -x PKG_CONFIG_PATH /opt/homebrew/opt/curl/lib/pkgconfig
 # Disable audio in clipboard operations
 set -x CLIPBOARD_NOAUDIO 1
 
+alias vim="nvim"
 alias ka="sudo kanata -c  $HOME/.config/kanata/mac.kbd"
 alias v="fd -t f -H -E .git -E .venv -L | fzf --preview 'bat --style numbers,changes --color=always --line-range=:500 {}' | xargs nvim"
 alias ls="eza -la"
