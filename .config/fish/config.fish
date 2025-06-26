@@ -13,7 +13,8 @@ set -x EDITOR nvim
 set -x VISUAL nvim
 
 # Bat theme
-set -x BAT_THEME "Catppuccin Mocha"
+# set -x BAT_THEME "Catppuccin Mocha"
+set -x BAT_THEME kanagawa
 
 # FZF configuration
 set -x FZF_DEFAULT_COMMAND "fd --hidden --strip-cwd-prefix --exclude .git --exclude .venv"
