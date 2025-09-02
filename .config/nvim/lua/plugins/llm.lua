@@ -28,7 +28,8 @@ return {
         version = false, -- Never set this value to "*"! Never!
         opts = {
             -- add any opts here
-            provider = "ollama",
+            -- provider = "ollama",
+            provider = "gemini",
             providers = {
                 ollama = {
                     endpoint = "http://127.0.0.1:11434",
