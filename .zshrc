@@ -18,8 +18,8 @@ export FZF_ALT_C_COMMAND="fd --type=d --hidden --strip-cwd-prefix --exclude .git
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
+*":$PNPM_HOME:"*) ;;
+*) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 export PATH="/Users/bcao/.ebcli-virtual-env/executables:$PATH"
 export PATH="/Library/TeX/texbin/:$PATH"
@@ -35,7 +35,7 @@ export CLIPBOARD_NOAUDIO=1
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
 autoload -Uz compinit
-if [ "$(find ~/.zcompdump -mtime 1)" ] ; then
+if [ "$(find ~/.zcompdump -mtime 1)" ]; then
     compinit
 fi
 compinit -C
@@ -69,11 +69,11 @@ setopt hist_verify
 setopt autocd
 
 _fzf_compgen_path() {
-  fd --hidden --exclude .git . "$1"
+    fd --hidden --exclude .git . "$1"
 }
 
 _fzf_compgen_dir() {
-  fd --type=d --hidden --exclude .git . "$1"
+    fd --type=d --hidden --exclude .git . "$1"
 }
 
 # Source runtime
@@ -101,4 +101,3 @@ source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 bindkey -s "^F" "tmux-sessionizer\n"
 bindkey -s "^G" "tmux-personal\n"
 # bindkey -v
-
