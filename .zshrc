@@ -25,6 +25,7 @@ export PATH="/Users/bcao/.ebcli-virtual-env/executables:$PATH"
 export PATH="/Library/TeX/texbin/:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
 export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
@@ -80,7 +81,8 @@ _fzf_compgen_dir() {
 eval "$(zoxide init zsh)"
 source <(fzf --zsh)
 # eval "$(register-python-argcomplete pipx)"
-eval "$(hub alias -s)"
+# eval "$(hub alias -s)"
+eval "$(mise activate zsh)"
 
 # Config starship prompt
 eval "$(starship init zsh)"
@@ -96,7 +98,7 @@ source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Keybinds
-# bindkey -s "^F" "tmux-sessionizer\n"
-# bindkey -s "^G" "tmux-personal\n"
+bindkey -s "^F" "tmux-sessionizer\n"
+bindkey -s "^G" "tmux-personal\n"
 # bindkey -v
 

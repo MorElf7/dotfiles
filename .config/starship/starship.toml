@@ -7,10 +7,7 @@ format = """
 $os\
 $username\
 $hostname\
-$directory\
-$git_branch\
-$git_status\
-$git_commit
+$directory
 $character"""
 
 right_format = """
