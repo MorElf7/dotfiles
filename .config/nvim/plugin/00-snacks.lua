@@ -63,6 +63,7 @@ require("snacks").setup({
   lazygit = { enabled = false },
   terminal = { enabled = false },
   picker = {
+    enabled = false,
     sources = {
       files = {
         finder = "files",
@@ -305,3 +306,5 @@ map("n", "<leader>N", function()
     },
   })
 end, { desc = "Neovim News" })
+
+Snacks.toggle.option("wrap", { name = "Wrap" }):map("<leader>uw")

@@ -3,6 +3,7 @@ vim.pack.add({
   "https://github.com/nvim-lualine/lualine.nvim",
   "https://github.com/nvim-mini/mini.indentscope",
   "https://github.com/stevearc/oil.nvim",
+  "https://github.com/mhinz/vim-signify",
 })
 
 -- lualine
@@ -73,3 +74,24 @@ require("oil").setup({
     ["g\\"] = "actions.toggle_trash",
   },
 })
+
+-- vim-signify
+vim.g.signify_vcs_list = { "hg", "git" }
+
+vim.g.signify_sign_add = "+"
+vim.g.signify_sign_change = "~"
+vim.g.signify_sign_delete = "-"
+-- vim.g.signify_sign_delete_first_line = ""
+
+vim.g.signcolumn = "number"
+
+local kanagawa_fg = "#DCD7BA"
+local cterm_fg = "223"
+
+vim.cmd(string.format("highlight SignifySignAdd guifg=%s ctermfg=%s guibg=#2f3832 ctermbg=236", kanagawa_fg, cterm_fg))
+vim.cmd(
+  string.format("highlight SignifySignChange guifg=%s ctermfg=%s guibg=#4E4337 ctermbg=237", kanagawa_fg, cterm_fg)
+)
+vim.cmd(
+  string.format("highlight SignifySignDelete guifg=%s ctermfg=%s guibg=#423134 ctermbg=52", kanagawa_fg, cterm_fg)
+)
