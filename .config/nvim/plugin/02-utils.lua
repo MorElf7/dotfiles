@@ -7,7 +7,10 @@ vim.pack.add({
   "https://github.com/nvim-mini/mini.comment",
   "https://github.com/windwp/nvim-autopairs",
   "https://github.com/folke/flash.nvim",
+  "https://github.com/sindrets/diffview.nvim",
 })
+
+require("diffview").setup({})
 
 require("grug-far").setup({})
 vim.keymap.set({ "n", "x" }, "<leader>rr", "<cmd>GrugFar<CR>")
